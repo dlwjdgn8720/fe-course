@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallary</title>
+    <style>
+        ul,section{
+            /* property: value */
+            list-style-type:none;
+            display: flex;
+            gap : 20px;
+        }
+
+        li,article,figure,figcaption{
+            border: 1px solid gray;
+        }
+
+        img{
+            width: 300px;
+        }
+
+        div{
+            text-align: center;
+            padding: 10px;
+            padding-bottom: 30px;
+        }
+
+        figcaption{
+            text-align: center;
+        }
+
+        /* article{
+            border: 1px solid lightgray;
+        } */
+        /* section{
+            display: flex;
+            gap: 20px;
+        } */
+    </style>
+</head>
+<body>
+    <h1>Image Gallary : List</h1>
+
+    <ul>
+        <li>
+            <img src="https://www.w3schools.com/css/img_5terre.jpg" alt="Cinque Terre">
+            <div>Cinque Terre</div>
+        </li>
+        <li>
+            <img src="https://www.w3schools.com/css/img_forest.jpg" alt="Green Forest">
+            <div>Green Forest</div>
+        </li>
+        <li>
+            <img src="https://www.w3schools.com/css/img_lights.jpg" alt="Northern Lights">
+            <div>Northern Lights</div>
+        </li>
+        <li>
+            <img src="https://www.w3schools.com/css/img_mountains.jpg" alt="Mountains">
+            <div>Mountains</div>
+        </li>
+    </ul>
+    <hr>
+
+    <h1>Image Gallary : semantic</h1>
+
+    <section>
+        <article>
+            <figure>
+                <img src="https://www.w3schools.com/css/img_5terre.jpg" alt="Cinque Terre">
+                <figcaption>
+                    <p>Cinque Terre</p>
+                </figcaption>
+            </figure>
+        </article>
+
+        <article>
+            <figure>
+                <img src="https://www.w3schools.com/css/img_5terre.jpg" alt="Cinque Terre">
+                <figcaption>
+                    <p>Cinque Terre</p>
+                </figcaption>
+            </figure>
+        </article>
+    </section>
+
+</body>
+</html>
