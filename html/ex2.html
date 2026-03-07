@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 
 <head>
     <meta charset="UTF-8">
@@ -8,143 +8,144 @@
     <title>회원가입</title>
     <style>
         * {
-          margin-bottom: 7px;  
-        }
-        label,span{
-            text-align: left;
+            margin-bottom: 7px;
         }
 
-        form input[type="text"],form input[type="email"],form input[type="password"]{
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="password"] {
             width: 400px;
             height: 30px;
         }
-
     </style>
 
 </head>
 
 <body>
-    <fieldset style="width: 400px;">
-    <header>
-        <h1 style="text-align: center;">회원가입</h1>
-    </header>
+    <header></header>
 
-    <main>
-        <form action="#" method="get">
-            <div>
-                <span style="background-color: blue; color: white;">필수항목</span>
-            </div>
+    <div style="display: flex; justify-content: center;">
+        <fieldset style="width: 400px;">
+            <h1 style="text-align: center;">회원가입</h1>
+            <main>
+                <form action="#" method="get">
+                    <div>
+                        <span style="background-color: blue; color: white;">필수항목</span>
+                    </div>
 
-            <!--아이디-->
-            <div>
-                <label for="id">아이디</label>
-            </div>
-            <div>
-                <input type="text" name="id">
-            </div>
+                    <!--아이디-->
+                    <div>
+                        <label for="id">아이디</label>
+                    </div>
+                    <div>
+                        <input type="text" name="id">
+                    </div>
 
-            <!--비밀번호-->
-            <div>
-                <label for="password">비밀번호</label>
-            </div>
-            <div>
-                <input type="password" name="password">
-            </div>
+                    <!--비밀번호-->
+                    <div>
+                        <label for="password">비밀번호</label>
+                    </div>
+                    <div>
+                        <input type="password" name="password">
+                    </div>
 
-            <!--이메일 -->
-            <div>
-                <label for="email">이메일</label>
-            </div>
-            <div>
-                <input type="email" name="email" placeholder="example@example">
-            </div>
+                    <!--이메일 -->
+                    <div>
+                        <label for="email">이메일</label>
+                    </div>
+                    <div>
+                        <input type="email" name="email" placeholder="example@example">
+                    </div>
 
-            <!--성명 -->
-            <div>
-                <label for="name">성명</label>
-            </div>
-            <div>
-                <input type="text" name="name" placeholder="홍길동">
-            </div>
+                    <!--성명 -->
+                    <div>
+                        <label for="name">성명</label>
+                    </div>
+                    <div>
+                        <input type="text" name="name" placeholder="홍길동">
+                    </div>
 
-            <!--나이 -->
-            <div>
-                <label for="age">나이</label>
-            </div>
-            <div>
-                <input type="text" name="age">
-            </div>
+                    <!--나이 -->
+                    <div>
+                        <label for="age">나이</label>
+                    </div>
+                    <div>
+                        <input type="text" name="age">
+                    </div>
 
-            <div>
-                <span style="background-color: blue; color: white;">당신에 대해서 알고 싶어요!</span>
-            </div>
+                    <div>
+                        <span style="background-color: blue; color: white;">당신에 대해서 알고 싶어요!</span>
+                    </div>
 
-            
-            
-            <!--취미 -->
-            <div>
-                <label for="hobby">취미를 선택해 주세요</label>
-            </div>
-            <div>
-                <input type="radio" name="hobby" value="game"><span>게임하기</span>
-                <input type="radio" name="hobby" value="music"><span>음악듣기</span>
-                <input type="radio" name="hobby" value="icedrink"><span>아이스음료마시기</span>
-            </div>
+                    <!--취미 -->
+                    <div>
+                        <label for="hobby">취미를 선택해 주세요</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="hobby" value="game"><span>게임하기</span>
+                        <input type="radio" name="hobby" value="music"><span>음악듣기</span>
+                        <input type="radio" name="hobby" value="icedrink"><span>아이스음료마시기</span>
+                    </div>
 
-            <!--좋아하는 음료 선택 -->
-            <div>
-                <label for="drink">좋아하는 음료를 선택해 주세요 (중복선택가능)</label>
-            </div>
-            <div>
-                <input type="checkbox" name="drink" value="shake"><span>쉐이크 종류 음료</span>
-                <input type="checkbox" name="drink" value="tea"><span>티 종류 음료</span>
-                <input type="checkbox" name="drink" value="coffee"><span>커피 종류 음료</span>
-            </div>
+                    <!--좋아하는 음료 선택 -->
+                    <div>
+                        <label for="drink">좋아하는 음료를 선택해 주세요 (중복선택가능)</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="drink" value="shake"><span>쉐이크 종류 음료</span>
+                        <input type="checkbox" name="drink" value="tea"><span>티 종류 음료</span>
+                        <input type="checkbox" name="drink" value="coffee"><span>커피 종류 음료</span>
+                    </div>
 
-            <!--동아리 참석가능 날짜-->
+                    <!--동아리 참석가능 날짜-->
 
-            <div>
-                <label for="clubdate" style="margin-right: 15px;">동아리 참석 가능 날짜 :</label>
-                <input type="date" name="clubdate">
-            </div>
+                    <div>
+                        <label for="clubdate" style="margin-right: 15px;">동아리 참석 가능 날짜 :</label>
+                        <input type="date" name="clubdate">
+                    </div>
 
-            <!--얼죽아-->
+                    <!--얼죽아-->
 
-            <div>
-                <label for="iceamericano" style="margin-right: 15px;">얼,죽,아에서 참여하고 싶은 모임은? :</label>
-                <select name="iceamericano">
-                    <option value="select">--선택해주세요--</option>
-                    <option value="a">A</option>
-                    <option value="b">B</option>
-                    <option value="c">C</option>
-                </select>
-            </div>
+                    <div>
+                        <label for="iceamericano" style="margin-right: 15px;">얼.죽.아에서 참여하고 싶은 모임은? :</label>
+                        <select name="iceamericano">
+                            <option value="select">--선택해주세요--</option>
+                            <option value="a">A</option>
+                            <option value="b">B</option>
+                            <option value="c">C</option>
+                        </select>
+                    </div>
 
-            <!--포트폴리오-->
-            <div>
-                <label for="portpolio">포트폴리오 제출하기</label>
-            </div>
+                    <!--포트폴리오-->
+                    <div>
+                        <label for="portpolio">포트폴리오 제출하기</label>
+                    </div>
 
-            <div>
-                <input type="file" name="portpolio">
-            </div>
+                    <div>
+                        <input type="file" name="portpolio">
+                    </div>
 
-            <!--하고싶은말-->
-            <div>
-                <label for="textarea">마지막으로 하고 싶은 말은?</label>
-            </div>
+                    <!--하고싶은말-->
+                    <div>
+                        <label for="textarea">마지막으로 하고 싶은 말은?</label>
+                    </div>
 
-            <div>
-                <textarea name="textarea" style="width: 400px; height: 200px;"></textarea>
-            </div>
+                    <div>
+                        <textarea name="textarea" style="width: 400px; height: 200px;"></textarea>
+                    </div>
 
-            <button type="button">다시하기</button>
-            <button type="submit">제출하기</button>
-        </form>
+                    <div style="text-align: center;">
+                        <button type="button"
+                            style="background-color: gray; color: white; width: 180px; height: 35px; margin-right: 40px;">다시하기</button>
+                        <button type="submit"
+                            style="background-color: blue; color: white; width: 180px; height: 35px;">제출하기</button>
+                    </div>
+                </form>
 
-    </main>
+            </main>
 
-    </fieldset>
+        </fieldset>
+    </div>
 
     <footer></footer>
 </body>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인폼</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin-bottom: 7px;
+        }
+
+        .wrapper {
+            background-color: rgb(50, 54, 70);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        button {
+            width: 150px;
+            height: 30px;
+            background-color: rgb(246, 179, 70);
+            color: white;
+        }
+
+        form input[type="text"],
+        [type="password"] {
+            width: 350px;
+            height: 10px;
+        }
+
+        .input-username,
+        .input-password {
+            position: relative;
+        }
+
+        .input-username input,
+        .input-password input {
+            color: #555;
+            font-size: 20px;
+            padding-left: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .input-username .fa-envelope-open,
+        .input-password .fa-lock {
+            position: absolute;
+            left: 5px;
+            top: 40%;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <header></header>
+
+    <main>
+        <div class="wrapper">
+            <!--로그인 폼-->
+            <form action="#" method="get">
+                <div style="margin-bottom: 50px;">
+                    <i class="fa-solid fa-circle-user fa-10x"></i>
+                </div>
+
+                <div class="input-username" style="margin-bottom: 20px;">
+                    <i class="fa-solid fa-envelope-open"></i>
+                    <input type="text" name="name" placeholder="Username">
+                </div>
+
+                <div class="input-password">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+
+                <div style="font-size: 13px;">
+                    <input type="radio" name="check" value="remember">
+                    <label for="remember" style="margin-right: 110px;">Remember me</label>
+
+                    <input type="radio" name="check" value="forgot">
+                    <label for="password">Forgot your password?</label>
+                </div>
+
+                <div>
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
