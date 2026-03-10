@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo Selector</title>
+    <meta name="description" content="Pseudo Selector">
+    <style>
+        /* h1 태그 앞에 content에 해당하는 내용을 추가하고 글자색을 초록색으로 정의 */
+        h1::before {
+            content: "h1태그 앞!!";
+            color: green;
+        }
+
+        /* h1 태그 뒤에 content에 해당하는 내용을 추가하고 글자색을 빨간색으로 정의 */
+        h1::after {
+            content: "h1태그 뒤!!";
+            color: red;
+        }
+
+        /* a 태그에 마우스를 올린 상태 */
+        a:hover {
+            text-decoration: none;
+        }
+
+        a.naver:hover {
+            color: red;
+        }
+
+        a.google:hover {
+            color: green;
+        }
+
+        a.daum:hover {
+            color: tomato;
+        }
+
+        a.naver:active {
+            color: green;
+        }
+
+        a.naver:visited {
+            color: gray;
+        }
+
+        input {
+            outline: none;
+        }
+
+        input:focus {
+            background-color: bisque;
+            border: 1px solid red;
+            border-radius: 4px;
+        }
+
+        /* 수열 */
+        ul.menus li:first-child,
+        ul.menus li:last-child,
+        ul.menus li:nth-child(3) {
+            background-color: red;
+        }
+
+        ul.menus li:nth-child(1) a,
+        ul.menus li:nth-child(5) a {
+            color: yellow;
+        }
+
+        div p:nth-child(even)
+
+        /* 짝수(2n,even) */
+            {
+            background-color: silver;
+        }
+
+        div p:nth-child(odd)
+
+        /* 홀수(2n+1, odd) */
+            {
+            background-color: aquamarine;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: silver;
+        }
+
+        table tr:first-child {
+            background-color: tomato;
+        }
+
+        input:checked+span {
+            background-color: silver;
+        }
+        input:disabled{
+            background-color: antiquewhite;
+        }
+
+        /* :not(선택자) -  부정 선택자 */
+        div *:not(p:nth-child(3)) {
+            color : red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Pseudo Selector</h1>
+    <p>
+        <a href="https://www.naver.com" class="naver">Naver</a>
+        <a href="https://www.google.com" class="google">Google</a>
+        <a href="https://www.daum.net" class="daum">Daum</a>
+    </p>
+
+    <form action="#">
+        <ul>
+            <li>
+                <label for="name">이름</label>
+                <input type="text" name="name" id="name" value="홍길동" disabled>
+            </li>
+            <li>
+                <label for="address">주소</label>
+                <input type="text" name="address" id="address">
+            </li>
+            <li>
+                <label for="hobby">취미를 선택해주세요</label>
+                <input type="checkbox" name="hobby" value="game" checked><span>게임하기</span>
+                <input type="checkbox" name="hobby" value="music"><span>음악듣기</span>
+            </li>
+            <li>
+                <label for="menu">메뉴를 선택해주세요</label>
+                <input type="radio" name="menu" value="coffee"><span>커피</span>
+                <input type="radio" name="menu" value="milk" checked><span>우유</span>
+            </li>
+            <li>
+                <button disabled>전송하기</button>
+            </li>
+        </ul>
+    </form>
+    <hr>
+    <h1>Pseudo Selector - 수열</h1>
+    <ul class="menus">
+        <li><a href="#">menu1</a></li>
+        <li><a href="#">menu2</a></li>
+        <li><a href="#">menu3</a></li>
+        <li><a href="#">menu4</a></li>
+        <li><a href="#">menu5</a></li>
+    </ul>
+    <div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores molestias facilis quasi sunt deserunt eius
+            libero blanditiis consequatur officia quia nemo, iure fugit veritatis nisi ipsa modi magnam voluptas
+            excepturi?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores molestias facilis quasi sunt deserunt eius
+            libero blanditiis consequatur officia quia nemo, iure fugit veritatis nisi ipsa modi magnam voluptas
+            excepturi?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores molestias facilis quasi sunt deserunt eius
+            libero blanditiis consequatur officia quia nemo, iure fugit veritatis nisi ipsa modi magnam voluptas
+            excepturi?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores molestias facilis quasi sunt deserunt eius
+            libero blanditiis consequatur officia quia nemo, iure fugit veritatis nisi ipsa modi magnam voluptas
+            excepturi?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores molestias facilis quasi sunt deserunt eius
+            libero blanditiis consequatur officia quia nemo, iure fugit veritatis nisi ipsa modi magnam voluptas
+            excepturi?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores molestias facilis quasi sunt deserunt eius
+            libero blanditiis consequatur officia quia nemo, iure fugit veritatis nisi ipsa modi magnam voluptas
+            excepturi?</p>
+    </div>
+
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>상품명</th>
+            <th>가격</th>
+            <th>비고</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>키보드</td>
+            <td>10,000</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>키보드</td>
+            <td>10,000</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>키보드</td>
+            <td>10,000</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>키보드</td>
+            <td>10,000</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>키보드</td>
+            <td>10,000</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>키보드</td>
+            <td>10,000</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>키보드</td>
+            <td>10,000</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>키보드</td>
+            <td>10,000</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>키보드</td>
+            <td>10,000</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>키보드</td>
+            <td>10,000</td>
+            <td></td>
+        </tr>
+    </table>
+</body>
+
+</html>
