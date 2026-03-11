@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overflow Style</title>
+    <style>
+        p{margin: 50px}
+
+        /* p1:가로 200,세로 200, 배경색 */
+        .p1{
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+            overflow: auto; /* scroll */
+        }
+        /* p2:가로 300,세로 200, 배경색 */
+        .p2{
+            width: 500px;
+            height: 300px;
+            background-color: green;
+            overflow-x: hidden;
+        }
+        /* p3:가로 400,세로 100, 배경색 */
+        .p3{
+            width: 400px;
+            height: 100px;
+            background-color: tomato;
+            overflow-x: hidden;
+        }
+        img{
+            width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Overflow Style</h1>
+    <p class="p1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi consequuntur quod temporibus corrupti deleniti odio nostrum iste sint libero nesciunt quia magni distinctio, culpa consequatur est atque ipsa laborum porro.</p>
+    <div class="p2">
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi consequuntur quod temporibus corrupti deleniti odio nostrum iste sint libero nesciunt quia magni distinctio, culpa consequatur est atque ipsa laborum porro.
+        </p>
+        <img src="../images/Mad.jpg" alt="MadOffice poster">
+    </div>
+    <p class="p3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi consequuntur quod temporibus corrupti deleniti odio nostrum iste sint libero nesciunt quia magni distinctio, culpa consequatur est atque ipsa laborum porro.</p>
+</body>
+</html>
