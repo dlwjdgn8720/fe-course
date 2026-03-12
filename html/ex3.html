@@ -19,18 +19,19 @@
             align-items: center;
             text-align: center;
         }
-
         button {
-            width: 150px;
-            height: 30px;
+            padding: 8px 70px;
+            border-radius: 1rem;
             background-color: rgb(246, 179, 70);
             color: white;
+            font-size: 25px;
+            margin-top: 20px;
         }
 
         form input[type="text"],
         [type="password"] {
             width: 350px;
-            height: 10px;
+            height: 15px;
         }
 
         .input-username,
@@ -42,39 +43,82 @@
         .input-password input {
             color: #555;
             font-size: 20px;
-            padding-left: 30px;
+            /* padding-left: 30px; */
             padding-top: 10px;
             padding-bottom: 10px;
         }
 
-        .input-username .fa-envelope-open,
+        /* .input-username .fa-envelope-open,
         .input-password .fa-lock {
             position: absolute;
             left: 5px;
-            top: 40%;
-            transform: translateY(-50%);
+            top: 25%;
+            background-color: lightgray;
+        } */
+         .input-username,.input-password{
+            display: flex;
+         }
+
+        .fa-crown{
+            position:absolute;
+            color: gold;
+            top: 10px;
+            left: 10px;
+            transform: translate(45px,45px);
+        }
+        .circle{
+            width: 50px;
+            height :50px;
+            border-radius: 50%;
+            background-color: black;
+            position: absolute;
+            transform: translate(30px,30px);
+            top:10px;
+            left:10px;
+        }
+        .div-fa-envelope-open{
+            width: 30px;
+            height : 35px;
+            border: 1px solid red;
+            background-color: lightgray;
+            align-content: center;
+        }
+        .div-fa-lock{
+            width: 30px;
+            height : 35px;
+            border: 1px solid red;
+            background-color: lightgray;
+            align-content: center;
         }
     </style>
 </head>
 
 <body>
     <header></header>
-
+    
     <main>
         <div class="wrapper">
             <!--로그인 폼-->
+            <div>
+                <div class="circle"></div>
+                <i class="fa-solid fa-crown"></i>
+            </div>
             <form action="#" method="get">
                 <div style="margin-bottom: 50px;">
                     <i class="fa-solid fa-circle-user fa-10x"></i>
                 </div>
 
                 <div class="input-username" style="margin-bottom: 20px;">
-                    <i class="fa-solid fa-envelope-open"></i>
+                    <div class="div-fa-envelope-open">
+                        <i class="fa-solid fa-envelope-open"></i>
+                    </div>
                     <input type="text" name="name" placeholder="Username">
                 </div>
 
                 <div class="input-password">
-                    <i class="fa-solid fa-lock"></i>
+                    <div class="div-fa-lock">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
                     <input type="password" name="password" placeholder="Password">
                 </div>
 

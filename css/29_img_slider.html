@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        .slider-wrapper{
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            position: relative;
+            width: 1200px;
+            height: 400px;
+            margin: auto;
+            text-align: center;
+        }
+        .slider-wrapper img{
+            width: 800px;
+            height: 400px;
+        }
+        button{
+            position: absolute;
+            top: 50%;
+            padding: 10px 20px;
+            background-color: black;
+            color:white;
+            border: none;
+            /* font-size: 2rem; */
+        }
+        .btn-prev{left: 50px;}
+        .btn-next{right: 50px;}
+        button:hover{
+            color: black;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Slider</h1>
+    <div class="slider-wrapper">
+        <img src="../images/Mad.jpg" alt="mad office poster">
+        <button class="btn-prev">Prev</button>
+        <button class="btn-next">Next</button>
+    </div>
+</body>
+</html>

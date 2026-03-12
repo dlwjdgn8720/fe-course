@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model</title>
+    <style>
+        div{
+            border: 1px solid red;
+            /* padding: 10px; */
+        }
+        span{
+            /* border: 1px solid blue; */
+            padding: 10px;
+            background-color: aquamarine;
+        }
+        .d1,.d2{margin: 20px;}
+        .d2{overflow: hidden;}
+        .d2 span{margin: 30px;} /* inline-level : margin 적용 ❌ */
+
+        .padding{/* border 기준 안쪽 여백 */
+            /* padding: T(top) R(right) B(bottom) L(left) */
+            /* padding: 10px 30px 50px 40px; */
+            /* padding: 20px 40px; 상하 20px 좌우 40px */
+            padding: 40px; /* 상하좌우 40px */
+        }
+        .margin{ /* border 기준 바깥쪽 여백 */
+            /* margin: T(top) R(right) B(bottom) L(left) */
+            /* margin: 10px 30px 50px 40px; */
+            /* margin: 20px 40px; 상하 20px 좌우 40px */
+            margin : 40px; /* 상하좌우 40px */
+        }
+        p,h3{
+            border: 1px solid green;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Box Model Style :: padding,border,margin</h1>
+    <div class="d1">Box Model - Content</div>
+    <div class="d2">
+        <span>Box Model - Content(span)</span>
+    </div>
+    <div class="padding">
+        <h3>Padding</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Blanditiis doloribus fuga consequatur. Distinctio, quasi! 
+            Tenetur perferendis totam enim fuga officiis molestias voluptatibus velit atque modi, 
+            quidem quam vitae asperiores optio!</p>
+    </div>
+    <div class="margin">
+        <h3>Margin</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Blanditiis doloribus fuga consequatur. Distinctio, quasi! 
+            Tenetur perferendis totam enim fuga officiis molestias voluptatibus velit atque modi, 
+            quidem quam vitae asperiores optio!</p>
+    </div>
+
+</body>
+</html>

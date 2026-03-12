@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box-sizing</title>
+    <style>
+        /* div{
+            width: 300px;
+            height: 200px;
+            margin : 20px;
+            background-color: aquamarine;
+        } */
+        .content-box{
+            box-sizing: content-box; /* box-sizing default */
+            border: 10px solid red;
+            padding: 0,20px;
+        }
+        .border-box{
+            box-sizing: border-box;
+            border: 10px solid red;
+            padding: 0,10px;
+        }
+        .d1{
+            box-sizing: border-box;
+            width: 800px;
+            height: 200px;
+            margin-top: 0;
+            background-color: antiquewhite;
+            display: flex;
+            border: 1px solid green;
+        }
+        p{
+            box-sizing: border-box;
+            width: 400px;
+            height: 200px;
+            background-color: tomato;
+            border: 10px solid blue;
+        }
+        .border-box{
+            box-sizing: border-box;
+            padding: 0 10px;
+            border:10px solid red;
+        }
+        .d0{
+            width: 400px;
+            height: 300px;
+            border: 1px solid gray;
+            padding: 20px; 
+        }
+        .d0 p{
+            /* border: none; */
+            border-right: 10px solid red;
+            background-color: #fff;
+            padding:30px;
+            /* margin: 20px; */
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>Box-sizing</h1>
+    <div class="content-box">
+        <ul>
+            <li>Box_sizing :content-box</li>
+            <li>width:300</li>
+            <li>border:10px</li>
+            <li>padding: 0 20px</li>
+            <li>❗total-width:360</li>
+        </ul>
+    </div>
+    <div class="border-box">
+        <ul>
+            <li>Box_sizing :border-box</li>
+            <li>width:300</li>
+            <li>border:10px</li>
+            <li>padding: 0 10px</li>
+            <li>❗total-width:300</li>
+        </ul>
+    </div>
+    <div class="d0">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+            Reprehenderit, minus laboriosam animi quibusdam beatae nemo quod eaque id cumque cupiditate 
+            vero consequuntur nihil, sunt vel assumenda amet sint totam saepe.</p>
+    </div>
+    <div class="d1">
+        <p class="p1">lorem</p>
+        <p class="p2">lorem</p>
+    </div>
+</body>
+</html>

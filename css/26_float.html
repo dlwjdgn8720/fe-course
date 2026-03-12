@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float Style</title>
+    <style>
+
+        .box-group div{
+            width: 100px; height: 100px;
+            /* display: inline-block; */
+        }
+        .d1{background-color: aquamarine;
+            float: left;
+        }
+        .d2{background-color: yellow;
+            float: left;
+        }
+        .d3{background-color: pink;
+            float: left;
+        }
+        .box-group p{
+            clear: left;
+        }
+        .img-group{
+            width: 500px;
+            height: 300px;
+            border: 1px solid #ccc;
+        }
+        .img-group img{
+            width: 100px;
+            height: 100px;
+            float: right;
+            padding: 20px;
+        }
+        p.no-float{ clear:both; }/* float 속성을 삭제 */
+    </style>
+</head>
+<body>
+    <h1>Float Style : block-level의 엘리먼트를 한줄로 정렬하여 배치</h1>
+    <div class="box-group">
+        <div class="d1"></div>
+        <div class="d2"></div>
+        <div class="d3"></div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, 
+            veniam ad ex qui voluptates, repellat assumenda consectetur error corrupti soluta at, 
+            eveniet velit ipsum incidunt magnam earum accusamus optio ducimus?</p>
+    </div>
+    <div class="img-group">
+        <img src="../images/img01_seo.png" alt="나무 이미지">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Inventore perspiciatis ut, architecto voluptate, 
+            necessitatibus corporis deserunt delectus tenetur doloremque, 
+            voluptatibus qui id hic nobis repudiandae! Porro inventore quia voluptas praesentium!</p>
+        <p class="no-float">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit quod illo necessitatibus eaque molestias. Suscipit deserunt esse explicabo blanditiis nemo deleniti error, veritatis vero placeat itaque obcaecati aspernatur vel illum?</p>
+    </div>
+</body>
+</html>
