@@ -8,14 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
-    
+
     <title>StarBucks Menu</title>
     <style>
-        *{
+        * {
             font-family: 'Nanum Gothic';
-            background-color: rgb(246,245,239);
+            /* background-color: rgb(246, 245, 239); */
+            background-color: transparent;
+            /* border: 1px solid red; */
         }
-        
+       
         header {
             /* border: 1px solid green; */
             width: 1000px;
@@ -23,7 +25,7 @@
             display: flex;
             justify-content: space-between;
         }
-        
+
         .header-menu-top ul,
         .header-menu-bottom ul {
             /* border: 1px solid red; */
@@ -52,22 +54,124 @@
             font-size: 0.9rem;
         }
 
-        .header-menu-top li:last-child{
-            border:1px solid gray;
+        .header-menu-top li:last-child {
+            border: 1px solid gray;
             border-radius: 4px;
             padding: 5px;
             background-color: white;
         }
 
-        .header-menu-top li:last-child i{
-           font-size:1.5rem;
-           font-weight: 700;
-           background-color: white;
+        .header-menu-top li:last-child i {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background-color: white;
         }
 
-        .header-menu-top li:last-child input{
-           display: none;
+        .header-menu-top li:last-child input {
+            display: none;
         }
+
+        .bg-div-wrap{
+            width: 100%;
+            height: 32.3vw;
+            background-image: url('https://image.istarbucks.co.kr/upload/common/img/main/2026/2026_spring1_ph1_top_bg_260220.jpg');
+            background-repeat: no repeat;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        .slogan-div {
+            position: absolute;
+            top: 200px;
+            left: 200px;
+        }
+
+        .img2{
+            position: absolute;
+            left: 700px;
+            top: 100px;
+        }
+
+        .img3{
+            position: absolute;
+            left: 880px;
+            top: 160px;
+        }
+        .img4{
+            position: absolute;
+            left: 990px;
+            top: 100px;
+        }
+        .img5{
+            position: absolute;
+            left: 1200px;
+            top: 100px;
+        }
+        .img6{
+            position: absolute;
+            left: 1360px;
+            top: 100px;
+        }
+
+        .img1,.img2,.img3,.img4,.img5,.img6,.btn_slogan{
+            opacity: 0;
+            animation: fadeInUp 5s ease forwards;
+        }
+        .img1{
+            animation-delay: 0.5s;
+        }
+        .img2{
+            animation-delay: 1s;
+        }
+        .img3{
+            animation-delay: 1.5s;
+        }
+        .img4{
+            animation-delay: 2s;
+        }
+        .img5{
+            animation-delay: 2.5s;
+        }
+        .img6{
+            animation-delay: 3s;
+        }
+        .btn_slogan{
+            animation-delay: 3.5s;
+        }
+
+        @keyframes fadeInUp {
+            from{
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to{
+                opacity: 1;
+            }
+        }
+        .btn_slogan{
+            position: absolute;
+            top: 350px;
+            left: 350px;
+        }
+        .btn_slogan a{
+            display: block;
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+            border: 3px solid rgb(172, 133, 186);
+            text-decoration: none;
+            color: rgb(172, 133, 186);
+            font-size: 15px;    
+            text-align: center;
+            line-height: 34px;
+        }
+        .btn_slogan a:hover{
+            color:white;
+            text-decoration: underline;
+        }
+        .btn_slogan:hover{
+            background-color: rgb(172, 133, 186);
+        }      
     </style>
 </head>
 
@@ -102,6 +206,44 @@
             </nav>
         </div>
     </header>
+    <main>
+        <div class="bg-div-wrap">
+            <div class="slogan-div">
+                <img src="https://image.istarbucks.co.kr/upload/common/img/main/2026/2026_spring1_ph1_top_slogan_260220.png"
+                    alt="slogan" class="img1">
+            </div>
+            <div class="common-img-div">
+                <div class="img2">
+                    <img src="https://image.istarbucks.co.kr/upload/common/img/main/2026/2026_spring1_ph1_top_drink01_260220.png"
+                        alt="">
+                </div>
+
+                <div class="img3">
+                    <img src="https://image.istarbucks.co.kr/upload/common/img/main/2026/2026_spring1_ph1_top_drink02_260220.png"
+                        alt="">
+                </div>
+
+                <div class="img4">
+                    <img src="https://image.istarbucks.co.kr/upload/common/img/main/2026/2026_spring1_ph1_top_drink03_260220.png"
+                        alt="">
+                </div>
+
+                <div class="img5">
+                    <img src="https://image.istarbucks.co.kr/upload/common/img/main/2026/2026_spring1_ph1_top_drink04_260220.png"
+                        alt="">
+                </div>
+
+                <div class="img6">
+                    <img src="https://image.istarbucks.co.kr/upload/common/img/main/2026/2026_spring1_ph1_top_drink05_260220.png"
+                        alt="">
+                </div>
+            </div>
+            <div class="btn_slogan">
+                <a href="#">자세히 보기</a>
+            </div>
+        </div>
+
+    </main>
 </body>
 
 </html>

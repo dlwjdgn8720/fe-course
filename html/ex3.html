@@ -27,43 +27,35 @@
             font-size: 25px;
             margin-top: 20px;
         }
-
-        form input[type="text"],
-        [type="password"] {
-            width: 350px;
-            height: 15px;
-        }
-
+        
         .input-username,
         .input-password {
             position: relative;
+            display: flex;   
         }
 
-        .input-username input,
-        .input-password input {
+        form input[type="text"],
+        [type="password"] {
+            width: 320px;
+            height: 15px;
             color: #555;
             font-size: 20px;
-            /* padding-left: 30px; */
+            padding-left: 10px; 
             padding-top: 10px;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
+            position: relative;
+            border: none;
         }
-
-        /* .input-username .fa-envelope-open,
-        .input-password .fa-lock {
+        .input-username input::placeholder,
+        .input-password input::placeholder{
             position: absolute;
-            left: 5px;
-            top: 25%;
-            background-color: lightgray;
-        } */
-         .input-username,.input-password{
-            display: flex;
-         }
-
+            top: 8px;
+        }
         .fa-crown{
             position:absolute;
             color: gold;
             top: 10px;
-            left: 10px;
+            left: 10.5px;
             transform: translate(45px,45px);
         }
         .circle{
@@ -76,19 +68,13 @@
             top:10px;
             left:10px;
         }
-        .div-fa-envelope-open{
-            width: 30px;
-            height : 35px;
-            border: 1px solid red;
+        .div-fa-envelope-open,.div-fa-lock{
+            width: 40px;
+            height : 40px;
+            border-right: 1px solid #444;
             background-color: lightgray;
             align-content: center;
-        }
-        .div-fa-lock{
-            width: 30px;
-            height : 35px;
-            border: 1px solid red;
-            background-color: lightgray;
-            align-content: center;
+            margin-left: 1px;
         }
     </style>
 </head>

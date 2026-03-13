@@ -1,0 +1,148 @@
+/*=== 배너 백그라운드 이미지 ===*/
+.main-top-bg-wrap {
+    width: 100%;
+    height: 32.3vw;
+    background-image: url('https://image.istarbucks.co.kr/upload/common/img/main/2026/2026_spring1_ph1_top_bg_260220.jpg');
+    background-repeat: no repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.main-top-slogan {
+    position: absolute;
+    opacity: 1;
+    top: 34.83%;
+    width: 23.5%;
+    left: 11.4%;
+}
+
+.slogan {
+    max-width: 100%;
+    vertical-align: top;
+    overflow-clip-margin: content-box;
+}
+
+.main-top-menus {
+    position: absolute;
+    max-width: 100%;
+}
+
+.set-01 {
+    z-index: 10;
+    top: 17.03%;
+    left: 35.35%;
+    width: 11.3%;
+}
+
+.set-02 {
+    z-index: 10;
+    top: 26.471%;
+    left: 44.4%;
+    width: 10.95%;
+}
+
+.set-03 {
+    z-index: 10;
+    top: 16.874%;
+    left: 50.7%;
+    width: 13.5%;
+}
+
+.set-04 {
+    z-index: 10;
+    top: 16.874%;
+    left: 62%;
+    width: 11.15%;
+}
+
+.set-05 {
+    z-index: 10;
+    top: 16.874%;
+    left: 70.2%;
+    width: 11.5%;
+}
+
+.btn-slogan {
+    z-index: 10;
+    width: 23.5%;
+    height: 38px;
+    top: 59.29%;
+    left: 11.35%;
+    text-align: center;
+    max-width: 100%;
+}
+
+.btn-slogan a {
+    font-size: 15px;
+    display: block;
+    width: 34%;
+    height: 100%;
+    margin: 0 auto;
+    color: #ac85ba;
+    border: 2px solid #ac85ba;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
+    /* color: #666; */
+    line-height: 34px;
+    cursor: pointer;
+}
+
+/* 상단 배너 - 애니메이션 추가 */
+.slogan,
+.set-01,
+.set-02,
+.set-03,
+.set-04,
+.set-05,
+.btn-slogan {
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.main-top-slogan {
+    animation-delay: 0.5s;
+}
+
+.set-01 {
+    animation-delay: 1s
+}
+
+.set-02 {
+    animation-delay: 1.5s
+}
+
+.set-03 {
+    animation-delay: 2s
+}
+
+.set-04 {
+    animation-delay: 2.5s
+}
+
+.set-05 {
+    animation-delay: 3s;
+}
+
+.btn-slogan {
+    animation-delay: 3.5s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.btn-slogan a:hover {
+    color: white;
+    text-decoration: underline;
+    background-color: rgb(172, 133, 186);
+}

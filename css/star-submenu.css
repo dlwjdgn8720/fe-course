@@ -1,0 +1,116 @@
+@font-face {
+            font-family: 'nbg';
+            src: url('../fonts/NanumBarunGothic.eot');
+        }
+        * { 
+            font-family: '맑은 고딕','Nanum Gothic';
+            box-sizing: border-box;
+            margin: 0; 
+            padding: 0;
+        }
+        header {
+            /* border: 1px solid red; */
+            font-family: 'nbg';
+            width: 100%;            
+            background-color: rgb(246, 245, 239);       
+        }
+        .header-content {
+            width: 1200px;
+            margin: auto;
+            display: flex;  
+            justify-content: space-between; 
+            /* border: 2px solid red;  */
+            padding-top: 20px;  
+            position: relative;
+            align-items: center;         
+        }
+        .header-menu-top ul, 
+        .header-menu-bottom ul {
+            display: flex;
+            list-style: none;
+            /* border: 1px solid blue; */
+            justify-content: right;
+        }
+        .header-menu-top ul { 
+            gap: 20px;
+            font-size: .9rem;
+        }
+        .header-menu-bottom ul { gap: 30px; }
+        .header-menu-top ul a, 
+        .header-menu-bottom ul a {
+            text-decoration: none;
+            color: #333;
+        }
+        .header-menu-top ul a {
+            letter-spacing: -0.5px;
+            
+        }
+        .header-menu-bottom ul a {
+            font-family: 'nbg';
+            font-size: .9rem;
+        }
+        .header-menu-top li:last-child {
+            border: 1px solid gray;
+            border-radius: 4px;
+            padding: 5px;
+            background-color: white;
+        }
+        .header-menu-top li:last-child i{
+            font-size: 1.5rem;
+            font-weight: 700;
+            background-color: white;
+        }
+        .header-menu-top li:last-child input{
+            display: none;
+        }
+
+        /*=== 서브메뉴 스타일 정의 시작 ===*/
+        .submenu{/* 처음 로딩 시 숨김 상태 */
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            background-color: #333;
+            color: #fff;
+            padding: 24px 32px;
+            z-index: 100;
+            /* border: 3px solid red; */
+        }
+        .submenu-inner{
+            /* border: 3px solid yellow; */
+            display: flex;
+            gap: 80px;
+            padding-left: 320px;
+        }
+
+        .submenu-inner dl dt{
+            font-size: .8rem;
+            padding: 10px;
+        }
+        .submenu-inner dd a{
+            font-size: .8rem;
+            color : rgb(153,153,153);
+            text-decoration: none;
+        }
+
+        .menu-link{
+            display: block;
+            padding: 10px 15px 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            /* border: 1px solid red; */
+        }
+        .menu-link:hover{
+            background-color: #333;
+            color: #9acd32;
+            text-decoration: underline;
+        }
+
+        .menu-item:hover .submenu{
+            display: block;
+        }
+
+        /*=== 서브메뉴 스타일 정의 종료 ===*/
