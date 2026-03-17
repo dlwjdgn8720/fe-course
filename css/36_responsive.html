@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Style</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>    
+        .header-toggle{
+            display: none;
+            color: aqua;
+            font-size: 1.5rem;
+        }
+        
+        /* media query :: 
+           중간에 처리되는 사이즈는 min-width로 정의 1001px 이상일때 실행되는 CSS*/
+        @media screen and (min-width: 1000px){ 
+            /* CSS Styling */
+            .wrapper{
+                background-color: aquamarine;
+            }
+           
+            .wrapper main{
+                background-color: blue;
+                color: #fff;
+                font-weight: 2rem;
+            }
+            .header-menu {
+                display: flex;
+                justify-content: right;
+                gap:10px;
+                list-style-type: none;
+                padding: 0; margin:0;
+            }
+            .header-menu a{
+                padding: 1rem 1.5rem;
+            }
+        }
+
+        /* media query :: 601 ~ 999px 이상일때 실행되는 CSS*/
+        @media (min-width:601px) and (max-width:999px){
+            /* CSS Styling */
+            .wrapper{
+                background-color: aquamarine;
+            }
+            .wrapper footer{
+                background-color: yellow;
+            }
+            .header-menu {
+                display: flex;
+                justify-content: center;
+                gap:10px;
+                list-style-type: none;
+                padding: 0; margin:0;
+                overflow: hidden;
+            }
+            .header-menu a{
+                padding: 1rem 1.5rem;
+                background-color: silver;
+            }
+        }
+
+        /* media query :: 0 ~ 600px 이상일때 실행되는 CSS*/
+        @media screen and (max-width:600px){ /* 0 ~ 600px */
+            /* CSS Styling */
+            .wrapper{
+                background-color: aquamarine;
+            }
+             .wrapper header{
+                background-color: tomato;
+                color: #fff;
+                font-weight: 2rem;
+            }
+            .wrapper main{
+                background-color: green;
+                color: #fff;
+                font-weight: 2rem;
+            }
+            .header-menu{display: none;}
+            .header-toggle{display: block;}
+        }
+    </style>
+</head>
+<body>
+    <h1>Responsive Style :: 반응형</h1>
+    <div class="wrapper">
+        <header>
+            <nav>
+                <ul class="header-menu">
+                    <li><a href="#">로그인</a></li>
+                    <li><a href="#">회원가입</a></li>
+                    <li><a href="#">공지사항</a></li>
+                    <li><a href="#">게시판</a></li>
+                    <li><a href="#">QnA</a></li>
+                </ul>
+                <button class="header-toggle"><i class="fa-solid fa-bars"></i></button>
+            </nav>
+        </header>
+        <main>Main</main>
+        <footer>Footer</footer>
+    </div>
+</body>
+</html>
