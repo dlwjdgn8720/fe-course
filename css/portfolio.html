@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../images/favicon_judy.ico" type ="image/x-icon">
+    <title>portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root{
+            --max-size-container : 1200px;
+        }
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style-type: none;
+        }
+
+        button{
+            border: 0;
+            outline: 0;
+        }
+
+        /* ------header style ----- */
+        .header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            color: white;
+            position: fixed;
+            width: 100%;
+            z-index: 1;
+        }
+        .header-nav{
+            display: flex;
+            gap: 0.8rem;
+            padding : 1rem;
+        }
+        .header-nav li:first-child{
+            border: 1px solid aqua;
+            border-radius: 0.2rem;
+            padding: 0.4rem 0.8rem;
+        }
+        .header-nav *:not(li:nth-child(1)){
+            margin-top: 0.5rem;
+        }
+        .header-nav li a{
+            text-decoration: none;
+            color: white;
+        }
+    
+        .header-logo{
+            display: flex;
+            padding: .5rem;
+        }
+        .header-logo-img{
+            width: 35px;
+            height: 35px;
+        }
+        .header-logo-text{
+            padding-left: 0.3rem;
+        }
+
+        /* main home style  */
+        #home{
+            text-align: center;
+            background-color: black;
+            color: white;
+            padding-top: 5rem;
+        }
+        .home-img{
+            border: 2px solid aqua;
+            border-radius: 100%;
+        }
+        .home-btn{
+            display: inline-block;
+            background-color: aqua;
+            color: black;
+            border-radius: 0.3rem;
+            text-decoration: none;
+            padding:0.5rem 1rem;
+            margin: 2rem;     
+        }
+
+        /* main about style  */
+        #about{
+            width: var(--max-size-container);
+            text-align: center;
+            margin: auto;
+            margin-top: 3rem;
+        }
+        .nav-about{
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            gap: 1rem;
+            padding: 2rem;
+        }
+        .nav-about-item{
+            background-color: black;
+            border-radius: 0.5rem;
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            box-shadow: 4px 8px 8px rgba(0,0,0,0.38);
+        }
+        .fa-html5,.fa-mobile,.fa-server{
+            font-size: 3rem;
+            color: aqua;
+        }
+        .title-about{
+            padding:0.8rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .li-about-job{
+            display: flex;
+            text-align: center;
+            align-items: center;
+            padding-left: 2.5rem;
+            gap: 0.8rem;
+        }
+
+        .nav-about-job{
+            margin-bottom: 2rem;
+        }
+
+        /* My work(skill) style */
+        #skills{
+            padding: 2.5rem;
+            width: var(--max-size-container);
+            background-color: #1b1e26;
+            color: white;
+            text-align: center;
+            align-items: center;
+            margin: auto;
+        }
+        .skills-div-wrap{
+            /* border: 1px solid white; */
+            display: grid;
+            grid-template-columns: 6fr 4fr;
+            margin: 2rem 0rem;
+            border-radius: 8px;
+            box-shadow: 4px 8px 8px rgba(0,0,0,0.38);
+            overflow: hidden;
+        }
+        .skills-bar{
+            grid-row: span 2;
+            background-color: black;
+            padding:1.5rem;
+        }
+        .bar-title{
+            display: flex;
+            justify-content: space-between;
+        }
+
+       .bar{ padding-bottom: 1.3rem;}   
+       .skills-title{color: aqua; padding-bottom: 1.3rem ;}
+       .bar-html{width: 98%; height: 3px;background-color: aqua;}
+       .bar-css{width: 90%; height: 3px;background-color: aqua;}
+       .bar-javascript{width: 90%; height: 3px;background-color: aqua;}
+       .bar-typescript{width: 80%; height: 3px;background-color: aqua;}
+       .bar-react{width: 79%; height: 3px;background-color: aqua;}
+       .bar-nodejs{width: 68%; height: 3px;background-color: aqua;}
+
+       .skills-etc{
+            background-color: #050a13;
+            filter: brightness(180%);
+            padding: 1rem;
+       }
+       .skills-tools{padding: 1rem;}
+       .description{margin: 1.3rem 0rem}
+
+       .category{
+            width: var(--max-size-container);
+            background-color: black;
+            color: white;
+            padding: 2rem;
+            margin: auto;
+            text-align: center;
+        }
+        .btn-category-wrap{
+           display: flex;
+           justify-content: center;
+           gap: 0.8rem;
+           padding: 1.5rem;
+       }
+
+       .btn-category{
+           border: 1px solid aqua;
+           background-color: #050a13;
+           color: white;
+           padding: 0.5rem 1.8rem;
+           border-radius: 0.2rem;
+       }
+
+       .category-sub-title{margin-top: 1.3rem;}
+
+       .div-category-images{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat(2,1fr);
+            overflow: hidden;
+            gap:1rem;       
+       }
+       .project-img{
+            width: 100%;
+            border-radius: 8px;
+       }
+
+       /* testimonials style */
+    </style>
+</head>
+<body>
+    <header>
+        <section class="header">
+            <div class="header-logo">
+                <img src="../images/favicon_judy.ico" alt="logo"
+                class="header-logo-img">
+                <h2 class="header-logo-text">Judy</h2>
+            </div>
+            <nav>
+                <ul class="header-nav">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">My work</a></li>
+                    <li><a href="#testimonials">Testimonial</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>        
+        </section>
+    </header>
+
+    <main>
+        <section id ="home">
+            <div class="home-img-div">
+                <img src="../images/favicon_judy.ico" alt="home-img"
+                class="home-img">
+            </div>
+            <h2>Hello
+            <br>
+            I'm <strong style="color: aqua;">Dream Coder</strong>,Judy
+            </h2>
+            <p>A software engineer currently residing in Seoul,South Korea</p>
+            <a href="#contact" class="home-btn">Contact me</a>
+        </section>
+
+        <section id ="about">
+            <h2>About me</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                Repellat esse doloribus numquam voluptatum? Nihil explicabo, 
+                rerum vitae ipsam, fugit quis aliquam sit sapiente, 
+                fugiat distinctio repellat impedit officia voluptas tenetur?</p>
+            <nav>
+                <ul class="nav-about">
+                    <li class="nav-about-item">
+                        <i class="fa-brands fa-html5"></i>
+                        <p class="title-about">Front-end</p>
+                        <p>HTML, CSS, JavaScript, TypeScript, React, WebAPIs</p>
+                    </li>
+                    <li class="nav-about-item">
+                        <i class="fa-solid fa-mobile"></i>
+                        <p class="title-about">Mobile</p>
+                        <p>Android Studio, React Native, iOS, Swift, Java, Kotlin</p>
+                    </li>
+                    <li class="nav-about-item">
+                        <i class="fa-solid fa-server"></i>
+                        <p class="title-about">Back-end</p>
+                        <p>Java, JavaScript, Go, Kotlin, Spring, Spring Boot</p>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="nav-about-job">
+                <ul>
+                    <li class="li-about-job">
+                        <img src="../images/google.png" alt="google">
+                        <div>
+                            <p>Google as Junior Software engineer</p>
+                            <p>2019 Oct- Untill now</p>
+                        </div>
+                    </li>
+                    <li class="li-about-job">
+                        <img src="../images/samsung.png" alt="samsung">
+                        <div>
+                            <p>Samsung as Junior Software engineer</p>
+                            <p>2010 Oct- 2019 Oct</p>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+
+        <section id ="skills">
+            <h2>My Skills</h2>
+            <p class="description">Skills & Attributes</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                Ab, earum facilis laborum, ducimus ipsa eligendi iusto inventore animi sequi id porro quidem sapiente a ut deleniti obcaecati. 
+                Qui, pariatur perspiciatis?</p>
+            <div class="skills-div-wrap">
+                <article class="skills-bar">
+                    <h3 class="skills-title">Coding Skills</h3>
+                    <ul>
+                        <li class="bar">
+                            <div class="bar-title"><span>HTML</span><span>98%</span></div>
+                            <div class="bar-html"></div>
+                        </li>
+                        <li class="bar">
+                            <div class="bar-title"><span>CSS</span><span>90%</span></div>
+                            <div class="bar-css"></div>
+                        </li>
+                        <li class="bar">
+                            <div class="bar-title"><span>JavaScript</span><span>90%</span></div>
+                            <div class="bar-javascript"></div>
+                        </li>
+                        <li class="bar">
+                            <div class="bar-title"><span>TypeScript</span><span>80%</span></div>
+                            <div class="bar-typescript"></div>
+                        </li>
+                        <li class="bar">
+                            <div class="bar-title"><span>React</span><span>79%</span></div>
+                            <div class="bar-react"></div>
+                        </li>
+                        <li class="bar">
+                            <div class="bar-title"><span>NodeJS</span><span>68%</span></div>
+                            <div class="bar-nodejs"></div>
+                        </li>
+                    </ul>
+                </article>
+
+                <article class="skills-tools">
+                    <h3 class="skills-title">Tools</h3>
+                    <ul>
+                        <li>Visual Studio Code</li>
+                        <li>Intellij</li>
+                        <li>Android Studio</li>
+                        <li>Eclipse</li>
+                        <li>MySQL Workbench</li>
+                    </ul>
+                </article>
+
+                <article class="skills-etc">
+                    <h3 class="skills-title">Etc</h3>
+                    <ul>
+                        <li>Git</li>
+                        <li>Scrum Master</li>
+                        <li>SVN</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+        <section class="category">
+            <div class="div-category-wrap">
+                <h2 class="category-title">My work</h2>
+                <p class="category-sub-title">Projects</p>
+                <div class="btn-category-wrap">
+                    <button class="btn-category">All</button>
+                    <button class="btn-category">Front-end</button>
+                    <button class="btn-category">Back-end</button>
+                    <button class="btn-category">Mobile</button>
+                </div>
+                    <div class="div-category-images">
+                        <img src="../images/project1.webp" alt="" class="project-img">
+                        <img src="../images/project2.webp" alt="" class="project-img">
+                        <img src="../images/project3.webp" alt="" class="project-img">
+                        <img src="../images/project4.webp" alt="" class="project-img">
+                        <img src="../images/project5.webp" alt="" class="project-img">
+                        <img src="../images/project6.webp" alt="" class="project-img">
+                        <img src="../images/project7.webp" alt="" class="project-img">
+                        <img src="../images/project8.webp" alt="" class="project-img">
+                    </div>
+            </div>                  
+        </section>
+
+        <section id ="testimonials">
+            
+        </section>
+    </main>
+
+    <footer>
+        <section id ="Contact">
+        </section>
+    </footer>
+</body>
+</html>
