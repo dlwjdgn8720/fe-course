@@ -37,7 +37,7 @@ function func_sum(){
 }
 
 //화살표 함수 선언(arrow function)
-//react에서 이런 형식으로 많이 씀
+//react에서 이런 형식으로 많이 씀(ES6부터)
 const arrow_sum = () => {
     console.log(`arrow_sum = ${10 + 20}`);
 }
