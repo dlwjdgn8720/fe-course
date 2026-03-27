@@ -62,6 +62,6 @@ console.log(fruits);
 console.log(obj1);
 console.log(obj1_1);
 console.log(obj1_2);
-// console.log(fruitsObj);
-// console.log(obj2);
+console.log(fruitsObj);
+console.log(obj2);
 
