@@ -17,7 +17,7 @@ function initForm() {
         -->
         <button type="button" class = "button" data-operation="increment">increment(+)</button>
         <button type="button" class = "button" data-operation="decrement">decrement(-)</button>
-    </div>`;
+    </div>`
     // DHTML에서는 화면을 구성한 후 반드시 이벤트 처리를 해야함!!
     document.querySelector('#content').innerHTML = ouput;
 
