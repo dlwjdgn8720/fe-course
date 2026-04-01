@@ -1,7 +1,7 @@
 /**
  * String 문자열 클래스
  * - character를 하나씩 배열에 저장
- * - splite(), slice(), chatAt(), toUpperCase()...
+ * - split(), slice(), chatAt(), toUpperCase()...
  */
 
 let str = '홍길동';
