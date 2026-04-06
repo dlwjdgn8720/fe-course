@@ -12,7 +12,7 @@ let [a, b, ...nlist] = numbers;
 console.log(a, b, nlist);
 
 //2. 오브젝트 리터럴
-console.clear();
+//console.clear();
 let hong = {
     name: '홍길동',
     age: 30,

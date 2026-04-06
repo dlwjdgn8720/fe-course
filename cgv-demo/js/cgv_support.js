@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', () => {
     let btnSearch = document.querySelector('#btnSearch');
 
     btnSearch.addEventListener('click', () => {
-        if(search_content.value.trim() === '') {
+        if (search_content.value.trim() === '') {
             alert('검색할 내용을 입력해주세요');
             search_content.focus();
         } else {
@@ -15,10 +15,56 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /** 테이블 생성 함수 */
-    createTable();
+    filterMenu('all'); // 맨 처음 호출되는 테이블
 
+    //id 별로 addEventListener로 click이벤트를 줄때
+    let menuList = document.querySelectorAll('.filter-menu li a');
+    menuList.forEach(menu => {
+        menuList.forEach(menu => menu.id === 'all'? 
+            menuSelectColor(menu) : menuDefaultColor(menu));
+            
+        menu.addEventListener('click', () => {
+            menuList.forEach(menu => menuDefaultColor(menu));
+            menuSelectColor(menu);
+            filterMenu(menu.id);
+        });
+    });
+    
 }); //window event
+
+function menuDefaultColor(menu) {
+    menu.style.background = "rgb(137,137,135)";
+    menu.style.borderLeft = `1px solid var(rgb(137,137,135))`;
+    menu.style.borderBottom = `2px solid var(rgb(137,137,135))`;
+}
+
+function menuSelectColor(menu) {
+    menu.style.background = "rgb(251, 67, 87)";
+    menu.style.borderLeft = `1px solid var(rgb(251, 67, 87))`;
+    menu.style.borderBottom = `2px solid var(rgb(251, 67, 87))`;
+}
+
+//filterMenu 함수 생성
+async function filterMenu(type) {
+    let filterList = null;
+
+    if (type === 'all') {
+        //createTable();
+        filterList = await getJson();
+    } else {
+        filterList = await filterData(type);
+    }
+
+    createTable(filterList);
+}
+
+//filterData 함수 생성
+async function filterData(type) {
+    let data = await getJson();
+    console.log('data =>', data);
+
+    return data.filter((item) => item.type === type);
+}
 
 
 //support.json JSON 데이터 가져오기
@@ -27,11 +73,9 @@ async function getJson() {
     return response.json();
 }
 
-async function createTable() {
-    let list = await getJson();
-    // console.log('list =>', list);
+async function createTable(list) {
     let output = `
-        <table>
+        <table id= 'stable'>
             <thead>
                 <tr>
                     <th>번호</th>
@@ -42,17 +86,16 @@ async function createTable() {
                 </tr>
             </thead>
             <tbody>
-            ${
-                list.map((item, idx) => `
+            ${list.map((item, idx) => `
                     <tr>
-                        <td>${idx+1}</td>
+                        <td>${idx + 1}</td>
                         <td>${item.type}</td>
                         <td>${item.title}</td>
                         <td>${item.rdate}</td>
                         <td>${item.hits}</td>
                     </tr>
                 `).join("")
-            }
+        }
             </tbody>
             <tfoot>
                 <tr>
@@ -62,5 +105,6 @@ async function createTable() {
         </table>
     `;
 
+    document.querySelector('#stable')?.remove();
     document.querySelector('#before-table').insertAdjacentHTML('afterEnd', output);
 }

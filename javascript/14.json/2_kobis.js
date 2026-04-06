@@ -142,8 +142,7 @@ const handleBoxOffice = async () => {
                 <td>${parseInt(movie.audiAcc).toLocaleString()}원</td>
                 <td>${parseInt(movie.salesAcc).toLocaleString()}원</td>          
             </tr>`
-        ).join("")
-            }
+        ).join("")}
         </table>`;
         document.querySelector('#content').innerHTML = output
     }
