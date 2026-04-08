@@ -22,15 +22,15 @@
     - 자식 컴포넌트 -> 부모 컴포넌트로 데이터 전달 불가(X)
 
 3. 리액트 앱 생성 - 리액트 프로젝트
-(1) Vite(비트) - 리액트 라이브러리를 제공하는 오픈 API
+(1) Vite(비트) - 리액트 라이브러리를 제공하는 오픈 API(NPM)
 (2) 기존 CRA(Create React App)를 대체하는 라이브러리
-    CRA는 2025년 기준 deprecate
+    CRA는 2025년 기준 deprecate(더 이상 사용하지 않음)
 (3) Vite를 활용한 리액트 앱 생성
     1) 개발 환경 구성 - Node.js 설치
         ex) node -v,npm -v
     2) 리액트 앱 생성 : my-app
-       형식 : npm create vite@latest [앱이름]
-       예) npm create vite@latest my-app
+       형식 : npm create vite@latest [앱이름(프로젝트명)]
+        ex) npm create vite@latest my-app
 
 4. 리액트 앱 동작 순서
     (1)  npm run dev 서버 실행 : http://localhost:5173/index.html
@@ -43,11 +43,12 @@
         - UI를 구성하는 독립적이고 재사용 가능한 단위
         - 함수가 HTML을 반환하는 구조 : return()
         - 레고 블록을 조합하여 페이지를 구성
+
     (2) 종류
         - 함수형 컴포넌트 : 2018년 이후 사용됨, 현재 표준
           function [컴포넌트명] () {
 	            return ();
-        }
+          }
 
         - 클래스형 컴포넌트 : 거의 사용 안함
           class[클래스명] extends React.Component{
@@ -58,19 +59,15 @@
        - 재사용성 : 한 번 생성하고 여러번 사용
        - 독립성 : 각각의 컴포넌트를 독립적으로 생성하여 유지보수 향상
        - 조합가능 : 컴포넌트를 조합하여 화면을 구성
+
      (4) 구성요소
         형식 : function [컴포넌트명]( Props ){
-	        //로직, 컴포넌트 상태관리(React Hooks)
-	        
-	        let name = "홍길동";
-              		
-	        return(
-		            <h1>{name}</h1>
-                  )
+	        //로직, 컴포넌트 상태관리(React Hooks)               		
+	        return( )
         }
         const [컴포넌트명] = ( Props ) => {
-         	        //로직, 컴포넌트 상태관리(React Hooks)
-	                return( )
+         	    //로직, 컴포넌트 상태관리(React Hooks)
+	            return( )
         }      
 
         - 컴포넌트명은 PascalCase(첫글자 대문자)
@@ -85,9 +82,9 @@
        
        (6) Export(내보내기) / Import(불러오기)
          -  컴포넌트 앞에 export를 추가함
-	            export (default) function[컴포넌트명](){
-		        return()
-            }
+	      export (default) function[컴포넌트명](){
+		          return( )
+          }
 
 	     - 별칭을 이용하여 자식 컴포넌트를 import 함
          - export default 컴포넌트 컴포넌트명 그대로 사용
@@ -122,9 +119,80 @@
      ex) <h1 style={{backgroundColor: 'red',...}}>Hello~ React</h1>
 
      - CSS 파일로 작성하고, 컴포넌트에서 import
-     ex) App.css ---> App.jsx import
-         App.jsx
-         --------------------------
-         import 'CSS 파일 위치';
-          ~
-         <h1 className="body">CSS 클래스명 적용</h1>
+     ex) 컴포넌트.css ---> App.jsx import, 전역 CSS
+         컴포넌트.module.css ---> 지역 CSS
+        App.jsx
+        --------------------------
+        import 'CSS 파일 위치'; //전역 CSS
+            ~
+        <h1 className="body">CSS 클래스명 적용</h1>
+
+7. 컴포넌트에 값 전달하기 : 단방향(부모 -> 자식)
+  (1) Props란?
+    - 부모 컴포넌트가 자식 컴포넌트에게 전달하는 단일 객체(Properties 약자)
+    - 단방향으로만 전달 가능함 : 부모 -> 자식
+
+  (2) Props 전달 방식 
+    1) 기본 전달하기
+      function Parent() {
+        return(
+          <Child name="홍길동" />
+        )
+      }  
+      function Child(props) {  //props = {name:"홍길동"}
+        return(
+          <h1>Hello~ My name is {props.name}</h1>
+        )
+      } 
+
+    2) ✨구조 분해 할당
+      function Parent() {
+        return(
+          <Child name="홍길동" />
+        )
+      }  
+      function Child({name}) {  //props = {name:"홍길동"}
+        //let {name} = props;
+        return(
+          <h1>Hello~ My name is {name}</h1>
+        )
+      }   
+
+    3) 스프레드 연산자
+      function Parent() {
+        let info = {
+          name:"홍길동",
+          age: "20"
+        }
+        return(
+          <Child {...info}/>
+        )
+      }  
+      function Child({name,age}) { 
+        return(
+          <h1>Hello~ My name is {name}, {age}</h1>
+        )
+      }
+
+    4) Props로 컴포넌트 전달하기
+      function PropsComp(){
+        return (
+          <h1>PropsComponent!!</h1>
+        )
+      }     
+      function Parent() {     
+        return(
+          <Child>
+           <PropsComp />
+          </Child>
+        )
+      }  
+      function Child({ children }) { 
+        return(
+          <h1>Hello~ </h1>
+          {children}
+        )
+      }   
+    
+
+    
