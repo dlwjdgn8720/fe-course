@@ -192,7 +192,68 @@
           <h1>Hello~ </h1>
           {children}
         )
-      }   
+      }
+
+  8.이벤트 처리하기
+    (1) 이벤트란?
+      - 웹 사이트에 발생하는 사용자의 행위임
+      - 버튼 클릭, 텍스트 입력, 페이지 스크롤... 행위가 발생 => '이벤트가 발생했다' 표현
+      - 이벤트 핸들링 : 이벤트 발생 시 특정 코드가 처리하도록 만드는 작업
+      - 이벤트 핸들러 : 이벤트를 처리하는 함수(객체)
+
+    (2) HTML vs React 이벤트 핸들링
+      - HTML : onclick(소문자) -> onclick="handleClick()"
+      - React : onClick(카멜케이스) -> onClick={handleClick}
+                                   -> onClick={()=>{}} //직접처리시 콜백함수 정의
+      예) HTML
+      <button type="button" onclick="handleClick()" />
+
+      예) React
+      <button type="button" onClick="{handleClick}" />
+      <button type="button" onClick="{() => {}}" />
     
+    (3) 이벤트 객체 활용 - 이벤트 발생 시 호출되는 객체
+      - 이벤트객체.target -> 이벤트 객체 target 요소
+      - 이벤트객체.target.name, 이벤트객체.target.innerText 등...
+
+      예)
+       const handleClick = (e) => {
+          console.log(e.target);
+       }
+
+       <button type="button" name="버튼1" onClick={handleClick} />
+       <button type="button" name="버튼2" onClick={(e) => console.log(e.target)} />
+
+      (4) 이벤트 객체를 활용하여 자식 -> 부모에게 값 전달 가능
+          function 부모(){
+            const handleParent = (4️⃣result) => {
+                console.log('자식이 보내온 값 ->', result);
+            }
+            return(
+              <자식 1️⃣click={handleParent}/>
+            )
+          }
+
+          function 자식(2️⃣{ click }){
+            const handleChild = () => {
+              //부모에게 100 전달
+              3️⃣click(100);
+            }
+            return(
+              <button type='button' onClick={handleChild}>클릭하세요!</button> />
+            )
+          }
+
+  9. 상태 관리(State) - useState
+    (1) 컴포넌트가 관리하는 동적값이 변경되면, 리액트 컴포넌트가 자동으로 리렌더링함.
+    (2) useState 사용법
+      [형식] import { useState } from 'react';
+            const [(동적값)변수, set변수명] = useState(변수의 초기값);
+
+      예) Number :: const [number, setNumber]  = useState(0);
+          String :: const [string, setString] = useState('');
+          Array ::  const[array, setArray] = useState([]);
+          Object ::  const[obj, setObj] = useState({});
+
 
     
