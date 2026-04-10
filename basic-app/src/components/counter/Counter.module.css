@@ -1,0 +1,11 @@
+.counter_container {
+    width: 400px;
+    text-align: center;
+    border: 1px solid gray;
+}
+
+.counter_buttons{
+    display: flex;
+    gap:5px;
+    justify-content: center;
+}

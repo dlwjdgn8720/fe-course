@@ -18,9 +18,9 @@ export default function App(){
     return (
         <>  
             <h1>Total Count :: <span><b>{totalCount}</b></span></h1>
-            <BasicCounter click={handleTotalCount} total={totalCount} reset={0} />
-            <BasicCounter click={handleTotalCount} total={totalCount} reset={0}/>
-            <BasicCounter click={handleTotalCount} total={totalCount} reset={0}/>
+            <BasicCounter click={handleTotalCount} total={totalCount}/>
+            <BasicCounter click={handleTotalCount} total={totalCount}/>
+            <BasicCounter click={handleTotalCount} total={totalCount}/>
         </>
     )
 

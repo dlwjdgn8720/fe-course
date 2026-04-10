@@ -254,6 +254,17 @@
           String :: const [string, setString] = useState('');
           Array ::  const[array, setArray] = useState([]);
           Object ::  const[obj, setObj] = useState({});
+  
+  10. Ref - useRef
+    (1) Ref란?
+       - 실제 DOM요소를 직접 참조하여 관리하는 기능을 가짐 (= Reference)
+    (2) useRef 사용법
+      import { useRef } from 'react';
+      const nameRef = useRef(null);
+      const handleOnChange = () => {}
+      <input type="text" name="name" ref={nameRef} onChange={handleOnChange}/>
 
+    (3) DOM 입력폼 값 가져오기 : nameRef.current.value
+        DOM 입력폼 포커스 정의 : nameRef.current.focus(); 
 
     

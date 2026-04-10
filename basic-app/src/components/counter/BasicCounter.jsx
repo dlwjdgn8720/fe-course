@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function BasicCounter({ click , total , reset}) {
+export default function BasicCounter({ click , total }) {
     const [count, setCount] = useState(0);
     let [flag, setFlag] = useState(false);
 
