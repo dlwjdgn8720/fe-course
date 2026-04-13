@@ -1,8 +1,17 @@
+.avatar_list {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+.avatar_img_circle {
+    width: 180px;
+    border-radius: 100%;
+    padding: 10px 20px;
+}
 .avatar_img {
     width: 180px;
     padding: 10px 20px;
 }
-
 .avatar {
     width: 220px;
     height: 240px;
@@ -10,16 +19,4 @@
     border: 1px solid #777;
     border-radius: 8px;
     text-align: center;
-}
-
-.avatar_list {
-    display: flex;
-    justify-content: space-between;
-    gap: 5px;
-}
-
-.avatar_img_circle{
-    width: 180px;
-    border-radius: 100%;
-    padding : 10px 20px;
 }
