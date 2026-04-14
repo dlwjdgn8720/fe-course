@@ -1,0 +1,15 @@
+{
+    "header": {
+        "menus" : [
+        { "href": "#home", "style": "header-menu-item active", "name": "Home" },
+        { "href": "#about", "style": "header-menu-item", "name": "About" },
+        { "href": "#skills", "style": "header-menu-item", "name": "Skills" },
+        { "href": "#work", "style": "header-menu-item", "name": "My work" },
+        { "href": "#testimonial", "style": "header-menu-item", "name": "Testimonial" },
+        { "href": "#contact", "style": "header-menu-item", "name": "Contact" }
+     ]
+    },
+    
+    "content": {},
+    "footer": {}
+}
