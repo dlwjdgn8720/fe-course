@@ -1,0 +1,12 @@
+{
+    "list": [
+        { "img": "/people1.webp"},
+        { "img": "/people2.webp"},
+        { "img": "/people3.webp"}
+    ], 
+    "alist":[
+        {"img": "/people1.webp", "name": "James"},
+        {"img": "/people2.webp", "name": "김철수"},
+        {"img": "/people3.webp", "name": "최영희"}
+    ]
+}
