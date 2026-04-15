@@ -1,15 +1,211 @@
 {
     "header": {
-        "menus" : [
-        { "href": "#home", "style": "header-menu-item active", "name": "Home" },
-        { "href": "#about", "style": "header-menu-item", "name": "About" },
-        { "href": "#skills", "style": "header-menu-item", "name": "Skills" },
-        { "href": "#work", "style": "header-menu-item", "name": "My work" },
-        { "href": "#testimonial", "style": "header-menu-item", "name": "Testimonial" },
-        { "href": "#contact", "style": "header-menu-item", "name": "Contact" }
-     ]
+        "logo": {
+            "img": "images/favicon_judy.ico",
+            "name": "Judy"
+        },
+        "menus": [
+            {
+                "href": "#home",
+                "style": "header-menu-item",
+                "name": "Home"
+            },
+            {
+                "href": "#about",
+                "style": "header-menu-item",
+                "name": "About"
+            },
+            {
+                "href": "#skills",
+                "style": "header-menu-item",
+                "name": "Skills"
+            },
+            {
+                "href": "#work",
+                "style": "header-menu-item",
+                "name": "My work"
+            },
+            {
+                "href": "#testimonial",
+                "style": "header-menu-item",
+                "name": "Testimonial"
+            },
+            {
+                "href": "#contact",
+                "style": "header-menu-item",
+                "name": "Contact"
+            }
+        ]
     },
-    
-    "content": {},
+    "content": {
+        "home": {
+            "img": "images/favicon_judy.ico",
+            "alt": "photo",
+            "title": " Junior Developer",
+            "name": "Judy",
+            "description": "A software engineer currently residing in Seoul,South Korea",
+            "href": "#",
+            "menuName": "contact me"
+        },
+        "about": {
+            "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit Accusantium excepturi fuga exercitationem eligendi consectetur praesentium, ex consequatur odit perferendis placeat sit debitis iure autem temporibus provident enim! Quia, itaque tempora?",
+            "majors": [
+                {
+                    "icon": "html",
+                    "title": "Front-end",
+                    "subjects": "HTML, CSS, JavaScript, TypeScript, React, WebAPIs"
+                },
+                {
+                    "icon": "mobile",
+                    "title": "Mobile",
+                    "subjects": "Android Studio, React Native, iOS, Swift, Java, Kotlin"
+                },
+                {
+                    "icon": "server",
+                    "title": "Back-end",
+                    "subjects": "Java, JavaScript, Go, Kotlin, Spring, Spring Boot"
+                }
+            ],
+            "jobs": [
+                {
+                    "jobName": "Google as Junior Software engineer",
+                    "jobPeriod": "2019 Oct- Untill now",
+                    "img": "./images/jobs/google.png",
+                    "alt": "google"
+                },
+                {
+                    "jobName": "Samsung as Junior Software engineer",
+                    "jobPeriod": "2010 Oct- 2019 Oct",
+                    "img": "./images/jobs/samsung.png",
+                    "alt": "samsung"
+                }
+            ]
+        },
+        "skills": {
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Ab, earum facilis laborum, ducimus ipsa eligendi iusto inventore animi sequi id porro quidem sapiente a ut deleniti obcaecati. Qui, pariatur perspiciatis?",
+            "coding": [
+                {
+                    "title": "HTML",
+                    "value": "98%",
+                    "width": "98%"
+                },
+                {
+                    "title": "CSS",
+                    "value": "90%",
+                    "width": "90%"
+                },
+                {
+                    "title": "JavaScript",
+                    "value": "80%",
+                    "width": "80%"
+                },
+                {
+                    "title": "TypeScript",
+                    "value": "90%",
+                    "width": "90%"
+                },
+                {
+                    "title": "React",
+                    "value": "88%",
+                    "width": "88%"
+                },
+                {
+                    "title": "Node.js",
+                    "value": "75%",
+                    "width": "75%"
+                }
+            ],
+            "tools": [
+                "Visual Studio Code",
+                "Intellij",
+                "Android Studio",
+                "Eclipse",
+                "MySQL Workbench"
+            ],
+            "etc": [
+                "Git",
+                "Scrum Master",
+                "SVN"
+            ]
+        },
+        "myworks": {
+            "categories": [
+                {
+                    "title": "All",
+                    "value": "8"
+                },
+                {
+                    "title": "Front-end",
+                    "value": "4"
+                },
+                {
+                    "title": "Back-end",
+                    "value": "2"
+                },
+                {
+                    "title": "Mobile",
+                    "value": "2"
+                }
+            ],
+            "projects": [
+                {
+                    "projectTitle": "Project#1",
+                    "projectDescription": "Clone Coding with HTML,CSS",
+                    "img": "./images/projects/project1.webp",
+                    "alt": "project-img",
+                    "style": "project-img"                    
+                },
+                {
+                    "projectTitle": "Project#2",
+                    "projectDescription": "Clone Coding with HTML,CSS",
+                    "img": "./images/projects/project2.webp",
+                    "alt": "project-img",
+                    "style": "project-img"                    
+                },
+                {
+                    "projectTitle": "Project#3",
+                    "projectDescription": "Clone Coding with HTML,CSS",
+                    "img": "./images/projects/project3.webp",
+                    "alt": "project-img",
+                    "style": "project-img"                     
+                },
+                {
+                    "projectTitle": "Project#4",
+                    "projectDescription": "Clone Coding with HTML,CSS",
+                    "img": "./images/projects/project4.webp",
+                    "alt": "project-img",
+                    "style": "project-img"                     
+                },
+                {
+                    "projectTitle": "Project#5",
+                    "projectDescription": "Clone Coding with HTML,CSS",
+                    "img": "./images/projects/project5.webp",
+                    "alt": "project-img",
+                    "style": "project-img"                     
+                },
+                {
+                    "projectTitle": "Project#6",
+                    "projectDescription": "Clone Coding with HTML,CSS",
+                    "img": "./images/projects/project6.webp",
+                    "alt": "project-img",
+                    "style": "project-img"                     
+                },
+                {
+                    "projectTitle": "Project#7",
+                    "projectDescription": "Clone Coding with HTML,CSS",
+                    "img": "./images/projects/project7.webp",
+                    "alt": "project-img",
+                    "style": "project-img"                     
+                },
+                {
+                    "projectTitle": "Project#8",
+                    "projectDescription": "Clone Coding with HTML,CSS",
+                    "img": "./images/projects/project8.webp",
+                    "alt": "project-img",
+                    "style": "project-img"                     
+                }
+            ]
+        }
+    },
     "footer": {}
 }

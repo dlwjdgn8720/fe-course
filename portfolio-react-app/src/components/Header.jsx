@@ -9,10 +9,10 @@ export default function Header({ data }) {
     return (
         <>
             <header className="header">
-                <Logo img="/images/favicon_judy.ico"
+                <Logo img={data?.logo?.img}
                     alt="header-logo"
                     style="header-logo-img"
-                    title="Judy"
+                    title={data?.logo?.name}
                 />
                 <MenuList menus={menus} style="header-menu" />
                 <ToggleButton/>
