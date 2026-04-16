@@ -6,34 +6,29 @@
         },
         "menus": [
             {
-                "href": "#home",
+                "href": "/",
                 "style": "header-menu-item",
                 "name": "Home"
             },
             {
-                "href": "#about",
+                "href": "/about",
                 "style": "header-menu-item",
                 "name": "About"
             },
             {
-                "href": "#skills",
+                "href": "/skills",
                 "style": "header-menu-item",
                 "name": "Skills"
             },
             {
-                "href": "#work",
+                "href": "/work",
                 "style": "header-menu-item",
                 "name": "My work"
             },
             {
-                "href": "#testimonial",
+                "href": "/testimonials",
                 "style": "header-menu-item",
                 "name": "Testimonial"
-            },
-            {
-                "href": "#contact",
-                "style": "header-menu-item",
-                "name": "Contact"
             }
         ]
     },
@@ -128,7 +123,7 @@
                 "SVN"
             ]
         },
-        "myworks": {
+        "work": {
             "categories": [
                 {
                     "category": "All",
