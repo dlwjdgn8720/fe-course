@@ -8,6 +8,7 @@ import { Outlet } from 'react-router-dom';
 
 
 export default function App() {
+  const [like, setLike] = useState(0);
   const [data, setData] = useState({});
   useEffect(() => {
     const loadData = async () => {
@@ -23,10 +24,11 @@ export default function App() {
   return (
     <>
       {/* {data.header && <Header data={data.header} />} */}
-      <Header data={data?.header} />
-      <Outlet context={data?.content} />
-      <ArrowTop/>
-      <Footer data={data?.footer}/>
+      <Header data={data?.header}
+              like={like} />
+      <Outlet context={{ data: data?.content, like, setLike }} />
+      <ArrowTop />
+      <Footer data={data?.footer} />
     </>
   )
 }

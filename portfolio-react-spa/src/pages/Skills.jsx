@@ -4,7 +4,7 @@ import { useOutletContext } from "react-router-dom";
 
 
 export default function Skills() {
-    const data = useOutletContext();
+    const { data } = useOutletContext();
     
     return (
         <>

@@ -3,7 +3,7 @@ import Menu from "../components/commons/Menu"
 import { useOutletContext } from "react-router-dom";
 
 export default function Home() {
-    const data = useOutletContext(); //content 객체 전제
+    const { data } = useOutletContext(); //content 객체 전제
     console.log(data);
     const { img, alt, title, name, description, href, menuName } = data?.home || {};
     // console.log('Home -->', img, alt, title, name, description, href, menuName);

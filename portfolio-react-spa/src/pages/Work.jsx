@@ -5,15 +5,15 @@ import { useOutletContext } from "react-router-dom";
 
 
 export default function Work() {
-    const data = useOutletContext();
+    const { data, like, setLike } = useOutletContext();
 
     return (
         <section id="work" className="section container">
             <Title title="My work" />
             <SubTitle subTitle="Projects" />
 
-            <Categories list={data?.work?.categories}/>
-            <Projects list={data?.work?.projects}/>
+            <Categories list={data?.work?.categories} />
+            <Projects list={data?.work?.projects} like={like} setLike={setLike} />
 
         </section>
     );

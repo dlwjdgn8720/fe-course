@@ -1,0 +1,233 @@
+{
+    "header": {
+        "logo": {
+            "img": "images/favicon_judy.ico",
+            "name": "Judy"
+        },
+        "menus": [
+            {
+                "href": "/",
+                "style": "header-menu-item",
+                "name": "Home"
+            },
+            {
+                "href": "/about",
+                "style": "header-menu-item",
+                "name": "About"
+            },
+            {
+                "href": "/skills",
+                "style": "header-menu-item",
+                "name": "Skills"
+            },
+            {
+                "href": "/work",
+                "style": "header-menu-item",
+                "name": "My work"
+            },
+            {
+                "href": "/testimonials",
+                "style": "header-menu-item",
+                "name": "Testimonial"
+            }
+        ]
+    },
+    "content": {
+        "home": {
+            "img": "images/favicon_judy.ico",
+            "alt": "photo",
+            "title": " Junior Developer",
+            "name": "Judy",
+            "description": "A software engineer currently residing in Seoul,South Korea",
+            "href": "#",
+            "menuName": "contact me"
+        },
+        "about": {
+            "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit Accusantium excepturi fuga exercitationem eligendi consectetur praesentium, ex consequatur odit perferendis placeat sit debitis iure autem temporibus provident enim! Quia, itaque tempora?",
+            "majors": [
+                {
+                    "icon": "html",
+                    "title": "Front-end",
+                    "subjects": "HTML, CSS, JavaScript, TypeScript, React, WebAPIs"
+                },
+                {
+                    "icon": "mobile",
+                    "title": "Mobile",
+                    "subjects": "Android Studio, React Native, iOS, Swift, Java, Kotlin"
+                },
+                {
+                    "icon": "server",
+                    "title": "Back-end",
+                    "subjects": "Java, JavaScript, Go, Kotlin, Spring, Spring Boot"
+                }
+            ],
+            "jobs": [
+                {
+                    "jobName": "Google as Junior Software engineer",
+                    "jobPeriod": "2019 Oct- Untill now",
+                    "img": "./images/jobs/google.png",
+                    "alt": "google"
+                },
+                {
+                    "jobName": "Samsung as Junior Software engineer",
+                    "jobPeriod": "2010 Oct- 2019 Oct",
+                    "img": "./images/jobs/samsung.png",
+                    "alt": "samsung"
+                }
+            ]
+        },
+        "skills": {
+            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Ab, earum facilis laborum, ducimus ipsa eligendi iusto inventore animi sequi id porro quidem sapiente a ut deleniti obcaecati. Qui, pariatur perspiciatis?",
+            "coding": [
+                {
+                    "title": "HTML",
+                    "value": "98%",
+                    "width": "98%"
+                },
+                {
+                    "title": "CSS",
+                    "value": "90%",
+                    "width": "90%"
+                },
+                {
+                    "title": "JavaScript",
+                    "value": "80%",
+                    "width": "80%"
+                },
+                {
+                    "title": "TypeScript",
+                    "value": "90%",
+                    "width": "90%"
+                },
+                {
+                    "title": "React",
+                    "value": "88%",
+                    "width": "88%"
+                },
+                {
+                    "title": "Node.js",
+                    "value": "75%",
+                    "width": "75%"
+                }
+            ],
+            "tools": [
+                "Visual Studio Code",
+                "Intellij",
+                "Android Studio",
+                "Eclipse",
+                "MySQL Workbench"
+            ],
+            "etc": [
+                "Git",
+                "Scrum Master",
+                "SVN"
+            ]
+        },
+        "work": {
+            "categories": [
+                {
+                    "category": "All",
+                    "count": "8"
+                },
+                {
+                    "category": "Front-end",
+                    "count": "4"
+                },
+                {
+                    "category": "Back-end",
+                    "count": "2"
+                },
+                {
+                    "category": "Mobile",
+                    "count": "2"
+                }
+            ],
+            "projects": [
+                {
+                    "title": "Project#1",
+                    "description": "Clone Coding with HTML,CSS",
+                    "img": "./images/projects/project1.webp",
+                    "alt": "project-img"
+                },
+                {
+                    "title": "Project#2",
+                    "description": "Clone Coding with HTML,CSS",
+                    "img": "./images/projects/project2.webp",
+                    "alt": "project-img"
+                },
+                {
+                    "title": "Project#3",
+                    "description": "Clone Coding with HTML,CSS",
+                    "img": "./images/projects/project3.webp",
+                    "alt": "project-img"
+                },
+                {
+                    "title": "Project#4",
+                    "description": "Clone Coding with HTML,CSS",
+                    "img": "./images/projects/project4.webp",
+                    "alt": "project-img"
+                },
+                {
+                    "title": "Project#5",
+                    "description": "Clone Coding with HTML,CSS",
+                    "img": "./images/projects/project5.webp",
+                    "alt": "project-img"
+                },
+                {
+                    "title": "Project#6",
+                    "description": "Clone Coding with HTML,CSS",
+                    "img": "./images/projects/project6.webp",
+                    "alt": "project-img"
+                },
+                {
+                    "title": "Project#7",
+                    "description": "Clone Coding with HTML,CSS",
+                    "img": "./images/projects/project7.webp",
+                    "alt": "project-img"
+                },
+                {
+                    "title": "Project#8",
+                    "description": "Clone Coding with HTML,CSS",
+                    "img": "./images/projects/project8.webp",
+                    "alt": "project-img"
+                }
+            ]
+        },
+        "testimonials": [
+            {
+                "img": "images/testimonials/people1.webp",
+                "alt": "people1",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Ab, earum facilis laborum, ducimus ipsa eligendi iusto inventore animi sequi id porro quidem sapiente a ut deleniti obcaecati. Qui, pariatur perspiciatis?",
+                "name": "James kims",
+                "company": "Google"
+            },
+            {
+                "img": "images/testimonials/people2.webp",
+                "alt": "people2",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Ab, earum facilis laborum, ducimus ipsa eligendi iusto inventore animi sequi id porro quidem sapiente a ut deleniti obcaecati. Qui, pariatur perspiciatis?",
+                "name": "Smith Park",
+                "company": "SamSung"
+            },
+            {
+                "img": "images/testimonials/people3.webp",
+                "alt": "people3",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Ab, earum facilis laborum, ducimus ipsa eligendi iusto inventore animi sequi id porro quidem sapiente a ut deleniti obcaecati. Qui, pariatur perspiciatis?",
+                "name": "Anna Lee",
+                "company": "SamSung"
+            }
+        ]
+    },
+    "footer": {
+        "description": "Junior Software Engineer Judy's Portfolio - All right reserved",
+        "list": [
+            {
+                "href": "#",
+                "icon": "github"
+            },
+            {
+                "href": "#",
+                "icon": "linkedin"
+            }
+        ]
+    }
+}

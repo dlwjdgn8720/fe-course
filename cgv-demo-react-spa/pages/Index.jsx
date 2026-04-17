@@ -3,60 +3,60 @@ import React from 'react';
 export default function Index() {
     return (
         // <!-- content start -->
-    <div class="content">
+    <div className="content">
         {/* <!-- 영화 예고편 : swiper --> */}
-        <div class="content-top">
+        <div className="content-top">
             {/* <div style="width:100%; height:400px;background-color: gray;"></div> */}
-            <iframe src="../javascript/15.swiper/swiper.html" frameborder="0" width="100%" height="400px"></iframe>
+            {/* <iframe src="../javascript/15.swiper/swiper.html" frameborder="0" width="100%" height="400px"></iframe> */}
         </div>
 
         {/* <!-- 무비차트 리스트 --> */}
-        <div class="content-moviechart">
+        <div className="content-moviechart">
             <div>
-                <article class="content-title-style">
+                <article className="content-title-style">
                     <div>
-                        <span class="content-title-style-font font-color-main">박스오피스</span>
+                        <span className="content-title-style-font font-color-main">박스오피스</span>
                         <span>&nbsp;</span>
-                        <span class="content-title-style-font font-color-gray">상영예정작</span>
+                        <span className="content-title-style-font font-color-gray">상영예정작</span>
                     </div>
                     <div>
-                        <button class="total-view-button">전체보기</button>
+                        <button className="total-view-button">전체보기</button>
                     </div>
                 </article>
-                <article class="content-moviechart-list" id="boxoffice">
+                <article className="content-moviechart-list" id="boxoffice">
                     
                 </article>
             </div>
         </div>
 
         {/* <!-- 이벤트, 특별관 --> */}
-        <div class="content-event-special">
+        <div className="content-event-special">
             <section>
-                <div class="content-title-style">
-                    <h3 class="content-title-style-font">EVENT</h3>
-                    <button class="total-view-button">전체보기</button>
+                <div className="content-title-style">
+                    <h3 className="content-title-style-font">EVENT</h3>
+                    <button className="total-view-button">전체보기</button>
                 </div>
-                <ul class="content-event-list">
+                <ul className="content-event-list">
                     <li>
                         <div>
                             <img src="images/event1.jpg" alt="event1 img" width="200px"/>
                         </div>
-                        <p class="event-content-title">[CGV]4월 컬처위크</p>
-                        <p class="event-content-title-date">2026.04.01 ~ 2026.04.30</p>
+                        <p className="event-content-title">[CGV]4월 컬처위크</p>
+                        <p className="event-content-title-date">2026.04.01 ~ 2026.04.30</p>
                     </li>
                     <li>
                         <div>
                             <img src="images/event1.jpg" alt="event2 img" width="200px"/>
                         </div>
-                        <p class="event-content-title">[CGV]4월 컬처위크</p>
-                        <p class="event-content-title-date">2026.04.01 ~ 2026.04.30</p>
+                        <p className="event-content-title">[CGV]4월 컬처위크</p>
+                        <p className="event-content-title-date">2026.04.01 ~ 2026.04.30</p>
                     </li>
                     <li>
                         <div>
                             <img src="images/event1.jpg" alt="event2 img" width="200px"/>
                         </div>
-                        <p class="event-content-title">[CGV]4월 컬처위크</p>
-                        <p class="event-content-title-date">2026.04.01 ~ 2026.04.30</p>
+                        <p className="event-content-title">[CGV]4월 컬처위크</p>
+                        <p className="event-content-title-date">2026.04.01 ~ 2026.04.30</p>
                     </li>
                 </ul>
             </section> 
@@ -64,11 +64,11 @@ export default function Index() {
 
              {/* <!-- 특별관 -->    */}
             <section> 
-                <div class="content-title-style">
+                <div className="content-title-style">
                     <h3>특별관</h3>
-                    <button class="total-view-button">전체보기</button>
+                    <button className="total-view-button">전체보기</button>
                 </div>
-                <div class="special-content-list">
+                <div className="special-content-list">
                     <div>
                         <img src="images/special1.png" alt="special img" width="400px"/>
                     </div>
@@ -94,11 +94,11 @@ export default function Index() {
             </section>
 
             {/* <!-- 패키지, 기프트 --> */}
-            <section class="package-content-list">
-                <div class="package-content-border">
+            <section className="package-content-list">
+                <div className="package-content-border">
                     <div>
-                        <span class="package-title-font">패키지</span>
-                        <span class="package-title-button">더보기</span>
+                        <span className="package-title-font">패키지</span>
+                        <span className="package-title-button">더보기</span>
                     </div>
                     <ul>
                         <li>
@@ -117,10 +117,10 @@ export default function Index() {
                         </li>
                     </ul>
                 </div>
-                <div class="package-content-border">
+                <div className="package-content-border">
                     <div>
-                        <span class="package-title-font">패키지</span>
-                        <span class="package-title-button">더보기</span>
+                        <span className="package-title-font">패키지</span>
+                        <span className="package-title-button">더보기</span>
                     </div>
                     <ul>
                         <li>
@@ -139,10 +139,10 @@ export default function Index() {
                         </li>
                     </ul>
                 </div>
-                <div class="package-content-border">
+                <div className="package-content-border">
                     <div>
-                        <span class="package-title-font">패키지</span>
-                        <span class="package-title-button">더보기</span>
+                        <span className="package-title-font">패키지</span>
+                        <span className="package-title-button">더보기</span>
                     </div>
                     <ul>
                         <li>
