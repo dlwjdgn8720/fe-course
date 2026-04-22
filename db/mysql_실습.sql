@@ -615,7 +615,6 @@ select *
     ** 그룹함수는 그룹핑이 가능한 컬럼에 적용하는것이 Good!!
 *********************************************************/
 
-select * from employee;
 -- (1) sum(숫자) : 전체 총합을 구하는 함수
 -- 사원테이블의 총 급여를 조회
 -- 2026-04-21 기준 급여가 null이면 0으로 기본값 정의
@@ -634,38 +633,289 @@ select concat(format(sum(salary), 0), '만원') as sum,
 	   concat(format(avg(salary), 0), '만원') as avg
 	from employee
     where dept_id = 'sys';
+    
+-- (3) max(숫자) : 최대값을 구하는 함수
+-- 사원테이블에서 가장 높은 급여를 받는 사원 조회
+select concat(format(max(salary),0), '만원') as 최고급여 from employee;
+
+-- (4) min(숫자) : 최소값을 구하는 함수
+-- 사원테이블에서 가장 낮은 급여를 받는 사원 조회
+select concat(format(min(salary),0), '만원') as 최저급여 from employee;
+
+-- 사원들의 총급여, 평균급여, 최대급여, 최소급여를 조회
+-- 3자리 구분, 화폐단위 '만원' 추가
+-- 현재날짜 기준 급여컬럼이 null인 경우에는 0으로 치환
+select concat(format(sum(ifnull(salary,0)),0), '만원') as 총급여, 
+	   concat(format(floor(avg(ifnull(salary,0))),0),'만원') as 평균급여,
+       concat(format(max(ifnull(salary,0)),0),'만원') as 최대급여, 
+       concat(format(min(salary),0),'만원') as 최소급여
+	from employee;
+
+-- (5) count(컬럼) : 조건에 맞는 데이터의 row수를 조회, null은 제외
+-- 사원테이블의 전체 row수
+select count(*) from employee; -- 20
+select count(salary) from employee; -- 19
+select count(emp_id) from employee; -- 20
+
+-- 재직중인 사원수 조회 : 16
+select count(*)
+	from employee
+    where retire_date is null; 
+    
+select count(*) - count(retire_date) as '재직자',
+	   count(retire_date) as '퇴사자'
+	from employee;
+
+-- 퇴사한 사원수 조회 : 4
+select count(retire_date) from employee;
+select count(*) from employee
+	where retire_date is not null;
+    
+-- '2015년'에 입사한 사원수 조회 : 5
+select count(*) 
+	from employee
+	where left(hire_date, 4) = '2015';
+
+-- 정보시스템(SYS) 부서의 사원수 조회 : 6
+select count(*) 
+	from employee
+	where dept_id = 'SYS';
+    
+-- 가장 빠른 입사자, 가장 늦은 입사자의 입사일을 조회
+select min(hire_date), 
+	   max(hire_date) 
+	from employee;
+
+-- 가장 빠른 입사자의 정보 조회
+select *
+	from employee
+    where hire_date = '2013-01-01';
+
+select *
+	from employee
+    where hire_date = (select min(hire_date) from employee);
+
+-- [group by] : ~별, 부서별 사원수, 입사날짜별 총급여..
+-- 그룹함수와 일반컬럼은 함께 사용 불가, 사용을 하려면 일반컬럼을 group by로 그룹핑 진행
+-- 단, group by 대상인 일반 컬럼은 그룹핑이 가능해야함
+select count(salary), salary
+	from employee
+	group by salary; -- salary 데이터를 그룹핑한 후 count(salary) 적용
+    
+-- 부서별 사원수, 총급여, 평균급여, 최대급여, 최소급여 조회
+-- null은 0으로 치환
+-- 3자리 구분, 소수점 절삭
+select dept_id as 부서ID,
+	   count(*) as 사원수,
+       format(sum(ifnull(salary,0)),0) as 총급여,
+       format(floor(avg(ifnull(salary,0))),0) as 평균급여,
+       format(max(ifnull(salary,0)),0) as 최대급여,
+       format(min(ifnull(salary,0)),0) as 최소급여
+	from employee
+    group by dept_id;
+    
+-- 연도별 사원수, 총급여, 평균급여, 최대급여, 최소급여 조회
+-- null은 0으로 치환
+-- 3자리 구분, 소수점 절삭
+select left(hire_date, 4) as 입사년도,
+	count(*) as 사원수,
+    format(sum(ifnull(salary,0)),0) as 총급여,
+	format(floor(avg(ifnull(salary,0))),0) as 평균급여,
+	format(max(ifnull(salary,0)),0) as 최대급여,
+	format(min(ifnull(salary,0)),0) as 최소급여
+from employee 
+group by left(hire_date, 4);
+
+-- [having 조건절] 그룹함수 또는 group by 결과에 대한 조건을 정의
+-- 부서별 총급여 조회
+-- 총급여가 30000 이상인 부서만 출력
+select  dept_id,
+		sum(ifnull(salary,0)) as '총급여'
+	from employee
+    group by dept_id
+    having sum(salary) >= 30000;
+    
+-- 연도별 사원수, 총급여, 평균급여, 최대급여, 최소급여 조회
+-- 소수점 X, 3자리 구분
+-- 총급여가 30000 이상인 년도 출력
+-- 급여 협상이 안된 사원은 제외
+select  left(hire_date, 4) as 연도별,
+		format(sum(ifnull(salary, 0)), 0) as 총급여,
+		format(floor(avg(ifnull(salary, 0))), 0) as 평균급여,
+		format(max(ifnull(salary, 0)), 0) as 최대급여,
+		format(min(ifnull(salary, 0)), 0) as 최소급여
+	from employee
+    where salary is not null
+    group by left(hire_date, 4)
+    having sum(salary) > 30000;
+
+-- [rollup 함수] 리포팅을 위한 함수
+-- 부서별 사원수, 총급여, 평균급여 조회
+select	dept_id as '부서ID',
+		count(*) as '사원수',
+		sum(ifnull(salary,0)) as '총급여',
+        truncate(avg(ifnull(salary,0)),0) as '평균급여'
+	from employee
+    group by dept_id with rollup;
+
+-- rollup한 결과의 부서아이디를 추가
+select	if(grouping(dept_id), '총합계', ifnull(dept_id, '-')) as dept_id,
+		count(*) as '사원수',
+		sum(ifnull(salary,0)) as '총급여',
+        truncate(avg(ifnull(salary,0)),0) as '평균급여'
+	from employee
+    group by dept_id with rollup;
+
+-- 연도별, 사원수, 총급여, 평균급여, 최대급여, 최소급여 조회, rollup 함수 적용
+-- 💥!! grouping 함수안에는 함수를 넣을수 없음
+-- 💥 if(grouping(left(hire_date,4)), '총합계', ifnull(left(hire_date,4), '-')) as hire_date,
+
+select  if(grouping(year), '총합계', ifnull(year, '-')) as hire_date,
+		count(*) as 사원수,
+        format(sum(ifnull(salary, 0)), 0) as 총급여,
+		format(floor(avg(ifnull(salary, 0))), 0) as 평균급여,
+		format(max(ifnull(salary, 0)), 0) as 최대급여,
+		format(min(ifnull(salary, 0)), 0) as 최소급여
+	from employee,
+			(select emp_id, left(hire_date, 4) year
+			from employee) T1
+    where employee.emp_id = T1.emp_id and salary is not null
+    group by year with rollup;
+    
+-- [limit 함수] 출력갯수를 제한하여 조회
+-- 오라클의 rownum 함수와 동일
+
+-- 전체 사원 리스트 중 상위 5개만 출력
+select * from employee limit 5;
+
+-- 최대 급여를 받는 사원을 순서대로 3명 조회 
+select * from employee
+	order by salary desc limit 3;
+    
+/**************************************************************
+	조인(JOIN) : 두 개이상의 테이블을 연동하여 하나의 데이터셋 구성
+    ERD(Entity Relationship Diagram) : 데이터베이스 설계도(구조도)
+    
+    ** ANSI SQL : 데이터베이스 시스템들의 표준 SQL **
+    ** 조인(JOIN) 종류 **
+    (1) CROSS JOIN(CATEISIAN: 카테이션) - 합집합
+		: 테이블의 데이터 전체를 조인
+        예) 테이블1(10개) * 테이블2(10개) = 100개
+	(2) INNER JOIN(EQUI) - 교집합
+		: 두 개이상의 테이블들이 조인연결고리를 통해 조인 실행
+	(3) OUTER JOIN - INNER JOIN + 조인에서 제외한 ROW 포함
+		LEFT OUTER JOIN - 왼쪽의 테이블의 ROW 포함
+        RIGHT OUTER JOIN - 오른쪽 테이블의 ROW 포함
+	(4) SELF JOIN - 한(자신) 테이블을 두 개(자신, 사본)의 테이블처럼 조인
+***************************************************************/
+
+-- [CROSS JOIN]
+-- 형식1) > SELECT [컬럼리스트]
+-- 		   FROM [테이블1] CROSS JOIN [테이블2]
+-- 		   WHERE [조건절]
+-- 형식2) > SELECT [컬럼리스트]
+-- 		   FROM [테이블1], [테이블2]
+-- 		   WHERE [조건절]
+
+-- employee, department cross join
+select count(*) from employee; -- 20
+select count(*) from department; -- 7
+select count(*) from unit; -- 3
+select * from employee 
+	cross join department 
+    cross join unit; -- 420
+select count(*) from employee, department; -- 140
+
+-- 사원, 휴가, 부서 테이블을 cross join
+select count(*) from employee;   -- 20
+select count(*) from vacation;   -- 102
+select count(*) from department; -- 7
+
+select count(*) from employee
+	cross join vacation
+    cross join department; -- 14280
+
+select count(*) from employee, vacation, department; -- 14280
+
+-- [INNER JOIN(EQUI JOIN)]
+-- 형식1> SELECT [컬럼리스트]
+-- 		 FROM [테이블1] INNER JOIN [테이블2]
+-- 		 			   ON [테이블1.조인컬럼] = [테이블2.조인컬럼]
+
+-- 형식2> SELECT [컬럼리스트]
+-- 		 FROM [테이블1],[테이블2]
+-- 		 WHERE [테이블1.조인컬럼] = [테이블2.조인컬럼]
+
+select count(*) from employee inner join department
+				on employee.dept_id = department.dept_id; -- 20
+                
+select count(*) 
+	from employee, department
+    where employee.dept_id = department.dept_id; -- 20
+    
+-- 사원테이블, 부서테이블, 본부테이블 inner join
+select *
+	from employee e inner join department d
+					on e.dept_id = d.dept_id
+                    inner join unit u
+                    on d.unit_id = u.unit_id;
+
+select *
+	from employee,department,unit
+    where employee.dept_id = department.dept_id
+		and department.unit_id = unit.unit_id;
+
+-- 모든 사원들의 사원번호, 사원명, 부서아이디, 부서명, 입사일, 급여를 조회
+select  e.emp_id,
+		e.emp_name,
+        d.dept_id,
+        d.dept_name,
+        e.hire_date,
+        e.salary
+	from employee e, department d
+    where e.dept_id = d.dept_id;
+			
+-- '영업'에 속한 사원들의 사원명, 입사일, 퇴사일, 급여, 부서아이디, 부서명 조회
+--  재직중인 사원은 '현재날짜로 출력' 이라고 출력
+select  e.emp_name,
+		e.hire_date,
+        ifnull(e.retire_date,curdate()) as retire_date,
+        e.salary,
+        d.dept_id,
+        d.dept_name
+	from employee e, department d
+    where e.dept_id = d.dept_id
+		and d.dept_name = '영업';
+
+-- '2015'년도에 입사자들의 사번, 사원명, 입사일, 부서명, 본부아이디, 본부명을 조회
+
+select  e.emp_id,
+		e.emp_name,
+        e.hire_date,
+        d.dept_name,
+        u.unit_id,
+        u.unit_name
+	from employee e, department d, unit u
+    where e.dept_id = d.dept_id
+		and d.unit_id = u.unit_id
+        and year(e.hire_date) = '2015';
+    
+
+    
 
 
-select 
-	if(grouping(year), '연도별 총합계', ifnull(year,'-')) 주문연도,
-    if(grouping(month),'월 별 총합계', ifnull(month,'-')) 주문월,
-    sum(total_due),
-    avg(total_due) 
-    from (select left(order_date,4) year,
-			substring(order_date,6,2) month, 
-            total_due from order_header) T 
-            group by year, month with rollup;
-            
-SELECT 
-    CASE 
-        WHEN GROUPING(year) = 1 THEN '전체 총합계'
-        ELSE year 
-    END AS 주문연도,
-    CASE 
-        WHEN GROUPING(month) = 1 AND GROUPING(year) = 0 THEN '연도별 소계'
-        WHEN GROUPING(month) = 1 AND GROUPING(year) = 1 THEN '-'
-        ELSE month 
-    END AS 주문월,
-    SUM(total_due) AS 합계,
-    floor(AVG(total_due)) AS 평균
-FROM (
-    SELECT 
-        LEFT(order_date, 4) AS year, 
-        SUBSTRING(order_date, 6, 2) AS month, 
-        total_due 
-    FROM order_header
-) T 
-GROUP BY year, month WITH ROLLUP;
+
+    
+
+    
+    
+	
+
+
+
+
+
+
 
 
 
