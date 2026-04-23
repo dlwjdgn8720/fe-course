@@ -197,10 +197,41 @@ show tables;
                  and city = '전주');
         
 -- Q16) 고객의 포인트 최댓값을 조회하세요.
+	select max(point) from customer;
 -- Q17) 하위 쿼리를 사용해 가장 포인트가 많은 고객의 이름, 아이디, 등록일, 포인트를 조회하세요.
+	select  customer_name,
+			customer_id,
+            register_date,
+            point
+		from customer
+	 where point = (select max(point) from customer);
+	
 -- Q18) 하위 쿼리를 사용해 홍길동(gdhong) 고객보다 포인트가 많은 고객 이름, 아이디, 등록일, 포인트를 조회하세요.
+	select  customer_name,
+			customer_id,
+            register_date,
+            point
+		from customer
+	 where point > (select point from customer where customer_name = '홍길동');
+     
 -- Q19) 하위 쿼리를 사용해 홍길동(gdhong) 고객과 같은 지역의 고객 이름, 아이디, 지역, 등록일, 포인트를 조회하세요.
 --      단, 고객 이름을 기준으로 오름차순 정렬해서 조회하세요.
+	select  customer_name,
+			customer_id,
+            city,
+            register_date,
+            point
+		from customer
+	 where city = (select city from customer where customer_name = '홍길동')
+     order by customer_name asc;
+     
 -- Q20) 하위 쿼리를 사용해 홍길동(gdhong) 고객보다 포인트가 많은 고객 이름, 아이디, 등록일, 포인트를 조회하고, 행번호를 추가하여 출력하세요.
+	select  ROW_NUMBER() OVER (ORDER BY point DESC) AS row_num, -- 행 번호 추가
+			customer_name,
+			customer_id,
+			register_date,
+			point
+		from customer
+	where point > (select point from customer where customer_name = '홍길동');
 
 

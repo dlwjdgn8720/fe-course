@@ -803,7 +803,7 @@ select * from employee
         예) 테이블1(10개) * 테이블2(10개) = 100개
 	(2) INNER JOIN(EQUI) - 교집합
 		: 두 개이상의 테이블들이 조인연결고리를 통해 조인 실행
-	(3) OUTER JOIN - INNER JOIN + 조인에서 제외한 ROW 포함
+	(3) OUTER JOIN - INNER JOIN + INNER JOIN에서 제외한 ROW 포함
 		LEFT OUTER JOIN - 왼쪽의 테이블의 ROW 포함
         RIGHT OUTER JOIN - 오른쪽 테이블의 ROW 포함
 	(4) SELF JOIN - 한(자신) 테이블을 두 개(자신, 사본)의 테이블처럼 조인
@@ -899,6 +899,316 @@ select  e.emp_id,
     where e.dept_id = d.dept_id
 		and d.unit_id = u.unit_id
         and year(e.hire_date) = '2015';
+	
+-- 인사과에 속한 사원들 중에 휴가를 사용한 사원의 내역 조회
+-- 부서명은 '인사'
+
+select *
+	from employee e, department d, vacation v
+	where e.dept_id = d.dept_id 
+      and e.emp_id = v.emp_id
+      and d.dept_name = '인사';
+      
+-- ANSI SQL
+select *
+	from employee e inner join department d on e.dept_id = d.dept_id
+					inner join vacation v on e.emp_id = v.emp_id
+	where d.dept_name = '인사';
+    
+-- 사원별 휴가사용 일수를 조회, 사원아이디, 사원명, 휴가일수 출력
+-- 사용일수 기준 내림차순 정렬, 상위 5명 출력
+select  e.emp_id,
+		e.emp_name,
+        count(*) as count
+	from employee e, vacation v
+	where e.emp_id = v.emp_id
+		group by e.emp_id
+		order by count desc
+		limit 5;
+
+select  e.emp_id,
+		e.emp_name,
+        count(*) as count
+	from employee e inner join vacation v on e.emp_id = v.emp_id
+		group by e.emp_id
+		order by count desc
+		limit 5;
+    
+-- 영업부서 사원의 사원명, 폰번호, 부서명, 휴가사용 이유, 소속본부 조회
+-- 휴가사용 이유가 '두통'인 사원 조회
+select e.emp_name,
+	   e.phone,
+       d.dept_name,
+       v.reason,
+       u.unit_name
+	from employee e, department d, vacation v, unit u
+    where e.dept_id = d.dept_id
+		and e.emp_id = v.emp_id
+		and d.unit_id = u.unit_id
+		and d.dept_name = '영업'
+        and v.reason = '두통';
+
+-- ANSI SQL
+select e.emp_name,
+	   e.phone,
+       d.dept_name,
+       v.reason,
+       u.unit_name
+	from unit u inner join department d on u.unit_id = d.unit_id
+				inner join employee e on d.dept_id = e.dept_id
+                inner join vacation v on e.emp_id = v.emp_id
+    where e.dept_id = d.dept_id
+		and e.emp_id = v.emp_id
+		and d.unit_id = u.unit_id
+		and d.dept_name = '영업'
+        and v.reason = '두통';
+
+-- 2014년부터 2016년까지 입사한 사원들 중에서 퇴사하지 않은 사원들의
+-- 사원아이디, 사원명, 부서명, 입사일, 소속본부를 조회
+-- 소속본부 기준으로 오름차순 정렬
+
+select e.emp_id,
+	   e.emp_name,
+       d.dept_name,
+       e.hire_date,
+       u.unit_name
+	from employee e, department d, unit u
+	where e.dept_id = d.dept_id
+			and d.unit_id = u.unit_id
+			and year(e.hire_date) between '2014' and '2016'
+            and e.retire_date is null
+			order by u.unit_id asc;
+
+-- 부서별 총급여, 평균급여, 총휴가사용일수를 조회
+-- 부서명, 부서아이디, 총급여, 평균급여, 휴가사용일수
+-- 평균급여는 소수점2자리, 총급여, 평균급여는 3자리 구분
+-- rollup 함수 추가
+select 	if(grouping(d.dept_id),'합계', d.dept_id) as '부서아이디',
+		ifnull(d.dept_name, '-') as '부서명',
+		concat(format(sum(e.salary),0), '만원') as '총급여',
+	    concat(format(truncate(avg(e.salary), 2), 0), '원') as '평균급여',
+	    sum(v.duration) as '휴가사용일수'
+	from department d, employee e, vacation v
+    where d.dept_id = e.dept_id
+		and e.emp_id = v.emp_id
+		group by d.dept_id, d.dept_name with rollup
+        having (grouping(d.dept_id) = grouping(d.dept_name));
+
+-- 본부별 > 부서별 > 사원별로 그룹핑한 후 부서의 휴가사용 일수를 조회
+select 	u.unit_id,
+		u.unit_name,
+        d.dept_name,
+        e.emp_name,
+        sum(v.duration) as '휴가사용 일수' -- 휴가 사용 일수
+	from employee e, department d, unit u, vacation v
+     where e.dept_id = d.dept_id
+		and d.unit_id = u.unit_id
+        and e.emp_id = v.emp_id
+	group by u.unit_id, d.dept_id, e.emp_id;
+    
+-- [OUTER JOIN]
+-- 오라클 INNER JOIN(EQUI JOIN) 문법에 (+) 코드를 추가하여 사용
+-- 현재 오라클 문법은 MySQL에서는 사용불가
+-- SELECT [컬럼리스트]
+-- FROM [테이블1] LEFT/RIGHT OUTER JOIN [테이블2]
+-- 			     ON [테이블1.조인컬럼] = [테이블2.조인컬럼]
+
+select distinct dept_id from employee; -- 6
+select dept_id from department; -- 7
+
+-- LEFT OUTER JOIN : LEFT에 부서테이블 위치
+-- 부서별 사원수 조회, 전체 부서 출력!!
+select  d.dept_id,
+		d.dept_name,
+		count(e.emp_id) as '사원수'
+	from department d left outer join employee e on d.dept_id = e.dept_id
+		group by d.dept_id;
+
+-- RIGHT OUTER JOIN : RIGHT에 부서테이블 위치
+select  d.dept_id,
+		d.dept_name,
+		count(e.emp_id) as '사원수'
+	from employee e left outer join department d on d.dept_id = e.dept_id
+		group by d.dept_id;
+
+-- 모든 부서의 아이디, 부서명, 본부명을 조회
+-- 본부에 속하지 않은 부서는 '준비중'으로 출력
+select	d.dept_id,
+		d.dept_name,
+        ifnull(u.unit_name, '준비중') as unit_name
+	from department d left outer join unit u 
+					  on d.unit_id = u.unit_id;
+
+-- 본부별 > 부서별로 그룹핑 한후 부서의 휴가 사용일수를 조회
+-- 부서의 누락없이 모두 출력
+
+select 	u.unit_id,
+		u.unit_name,
+        d.dept_id,
+        d.dept_name,
+        sum(ifnull(v.duration, 0)) as '휴가사용일수'
+	from employee e right outer join department d on e.dept_id = d.dept_id
+					left outer join unit u on d.unit_id = u.unit_id
+                    left outer join vacation v on e.emp_id = v.emp_id
+	group by u.unit_id, d.dept_id
+    order by sum(ifnull(v.duration, 0)) desc;
+
+
+-- 2017년부터 2018년도까지 입사한 사원들의 사원명, 입사일, 연봉, 부서명, 본부명 조회
+-- 단, 퇴사한 사원들 제외
+select e.emp_name,
+	   e.hire_date,
+       e.salary,
+       d.dept_name,
+       u.unit_name
+	from employee e right outer join department d on e.dept_id = d.dept_id
+				    left outer join unit u on d.unit_id = u.unit_id
+	where year(e.hire_date) between '2017' and '2018'
+    and e.retire_date is null;
+ 
+-- 서브쿼리(inner join + outer join)
+select e.emp_name,
+	   e.hire_date,
+       e.salary,
+       d.dept_name,
+       u.unit_name
+	from department d inner join
+    (select * 
+			from employee 
+            where retire_date is null 
+            and year(hire_date) between 2017 and 2018) e 
+		on e.dept_id = d.dept_id
+		left outer join unit u on d.unit_id = u.unit_id;
+
+-- 서브쿼리(outer join)
+select  e.emp_name,
+		e.hire_date,
+        e.salary,
+        d.dept_name,
+        u.unit_name
+from (select emp_name, hire_date, salary, dept_id
+		from employee 
+		where retire_date is null) e right outer join department d 
+									on e.dept_id = d.dept_id
+									left outer join unit u 
+                                    on d.unit_id = u.unit_id
+where left(hire_date, 4) between '2017' and '2018';          
+        
+-- [SELF JOIN] 자신의 테이블을 조인
+-- SELF 조인은 서브쿼리 형식으로 변환하여 사용됨!
+-- 형식1> SELECT [컬럼리스트]
+-- 	  	 FROM [테이블원본] LEFT/RIGHT JOIN [테이블사본]
+-- 		 				ON [테이블원본.조인컬럼] = [테이블사본.조인컬럼]
+
+-- 형식2> SELECT [컬럼리스트]
+-- 	  	 FROM [테이블원본], [테이블사본]
+-- 		 WHERE [테이블원본.조인컬럼] = [테이블사본.조인컬럼]
+
+select * 
+	from employee e1 left join employee e2 
+					 on e1.emp_id = e2.emp_id;
+
+select * 
+	from employee e1, employee e2
+    where e1.emp_id = e2.emp_id;
+    
+/**************************************************************
+	서브쿼리(SubQuery) : 메인 쿼리에 다른 쿼리를 추가하여 실행방식
+    -> (쿼리작성) 괄호안에 쿼리를 작성하여 메인쿼리에 추가
+    형식 > SELECT [컬럼리스트 추가 -> (스칼라 서브쿼리)] 🔅오라클 사용❌
+		  FROM [테이블명 추가 -> (인라인뷰)]
+          WHERE [조건절 -> (서브쿼리 : 단일행, 다중행)]
+***************************************************************/
+-- [서브쿼리 : 단일행은 '='로 비교함]
+-- '정보시스템' 부서의 사원들의 사번, 사원명, 입사일, 부서아이디, 급여 조회
+select emp_id,
+	   emp_name,
+       hire_date,
+       dept_id,
+       salary
+	from employee
+    where dept_id  = (select dept_id from department 
+						where dept_name = '정보시스템');
+select dept_id
+	from department
+    where dept_name = '정보시스템';
+
+select e.emp_id,
+	   e.emp_name,
+       e.hire_date,
+       d.dept_id,
+       e.salary
+	from employee e, department d
+    where e.dept_id = d.dept_id
+		and d.dept_name = '정보시스템';
+
+-- [서브쿼리: 단일행]
+-- 홍길동 사원이 속한 부서아이디, 부서명, 부서오픈일 조회
+select dept_id from employee where emp_name = '홍길동';
+select dept_id,
+	   dept_name,
+       start_date
+	from department
+    where dept_id = (select dept_id from employee 
+						where emp_name = '홍길동');
+
+-- [서브쿼리 : 단일행]
+-- 홍길동 사원의 휴가사용 내역을 조회
+select emp_id from employee where emp_name = '홍길동';
+select  vacation_id,
+		emp_id,
+        (select emp_name from employee where emp_name = '홍길동') as emp_name, -- 권장❌
+        begin_date,
+        end_date,
+        reason,
+        duration
+	from vacation
+    where emp_id = (select emp_id from employee where emp_name = '홍길동');
+
+-- [서브쿼리 : 단일행]
+-- '제3본부'에 속한 모든 부서를 조회
+select unit_id from unit where unit_name = '제3본부';
+select *
+	from department
+    where unit_id = (select unit_id from unit where unit_name = '제3본부');
+
+-- [서브쿼리 : 단일행]
+-- 최고 연봉을 받는 사원의 정보를 조회
+select max(salary) from employee;
+select *
+	from employee
+	where salary = (select max(salary) from employee);
+    
+-- [서브쿼리 : 단일행]
+-- 최근에 입사한 사원의 정보를 조회 
+select max(hire_date) from employee;
+select *
+	from employee
+    where hire_date = (select max(hire_date) from employee);
+
+-- [서브쿼리 : 단일행]
+-- 가장 먼저 퇴사한 사람의 정보
+select min(retire_date) from employee;
+select *
+	from employee
+    where retire_date = (select min(retire_date) from employee);
+
+
+    
+
+    
+
+
+
+
+	 
+
+
+
+
+        
+
+
     
 
     
