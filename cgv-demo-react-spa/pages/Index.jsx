@@ -1,4 +1,5 @@
 import React from 'react';
+import SwiperCgv from '../commons/SwiperCgv.jsx';
 
 export default function Index() {
     return (
@@ -6,8 +7,7 @@ export default function Index() {
     <div className="content">
         {/* <!-- 영화 예고편 : swiper --> */}
         <div className="content-top">
-            {/* <div style="width:100%; height:400px;background-color: gray;"></div> */}
-            {/* <iframe src="../javascript/15.swiper/swiper.html" frameborder="0" width="100%" height="400px"></iframe> */}
+            <SwiperCgv/>
         </div>
 
         {/* <!-- 무비차트 리스트 --> */}

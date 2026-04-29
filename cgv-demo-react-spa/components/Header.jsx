@@ -1,44 +1,39 @@
 import React from 'react';
+import Logo from './Logo.jsx';
+import { Link, NavLink } from 'react-router-dom';
 
-export default function Header() {
+export default function Header({ data }) {
     return (
         <header>
-            <div class="header-top">
-                <div class="header-top-logo">
-                    <a href="index.html" target="_parent">
-                        <img src="images/logoRed.png" alt="CGV LOGO" />
-                    </a>
-                    <span class="font-color-gray">DEEP DIVE SPACE</span>
-                </div>
-                <div class="header-top-card">
-                    <img src="images/header_card_img.png" alt="Card Img" />
-                </div>
+            <div className="header-top">
+                <Logo data={data} />
+
                 <nav>
                     <ul>
                         <li>
-                            <a href="./login/login.html"
-                                class="header-menu-icon"
-                                target="_parent">
+                            <NavLink to={"/Login"}
+                                className="header-menu-icon">
+                                {/* // target="_parent"> */}
                                 <img src="images/loginPassword.png" alt="Login Img" />
                                 <span>&nbsp;&nbsp;로그인</span>
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
                             <a href="./join/join.html"
-                                class="header-menu-icon"
+                                className="header-menu-icon"
                                 target="_parent">
                                 <img src="images/loginJoin.png" alt="Join Img" />
                                 <span>회원가입</span>
                             </a>
                         </li>
                         <li>
-                            <a href="./mycgv/mycgv.html" class="header-menu-icon" target="_parent">
+                            <a href="./mycgv/mycgv.html" className="header-menu-icon" target="_parent">
                                 <img src="images/loginMember.png" alt="Mycgv Img" />
                                 <span>MY CGV</span>
                             </a>
                         </li>
                         <li>
-                            <a href="./support/support.html" class="header-menu-icon" target="_parent">
+                            <a href="./support/support.html" className="header-menu-icon" target="_parent">
                                 <img src="images/loginCustomer.png" alt="Customer Img" />
                                 <span>고객센터</span>
                             </a>
@@ -46,9 +41,9 @@ export default function Header() {
                     </ul>
                 </nav>
             </div>
-            <div class="header-bottom">
-                <div class="header-bottom-content">
-                    <ul class="flex-container">
+            <div className="header-bottom">
+                <div className="header-bottom-content">
+                    <ul className="flex-container">
                         <li><a href="#">영화</a></li>
                         <li><a href="#">극장</a></li>
                         <li><a href="#">예매</a></li>
@@ -57,10 +52,10 @@ export default function Header() {
                         <li><a href="#">혜택</a></li>
                     </ul>
 
-                    <div class="header-bottom-search">
+                    <div className="header-bottom-search">
                         <input type="search" value="리틀엠마" />
                         {/* <!-- fontawesom에서 돋보기 아이콘 추가 --> */}
-                        <i class="fas fa-search header-search" ></i>
+                        <i className="fas fa-search header-search" ></i>
                     </div>
                 </div>
             </div>
