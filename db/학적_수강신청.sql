@@ -8,7 +8,9 @@ CREATE DATABASE IF NOT EXISTS `enroll2026`;
 show databases;
 use enroll2026;
 select database();
+show tables;
 
+-- [instructor:강사] 테이블 생성
 create table instructor(
 	instructor_no int primary key,
     instructor_name varchar(10),
@@ -16,6 +18,9 @@ create table instructor(
     gender char(1)
 );
 
+select * from instructor;
+
+-- [subject : 과목] 테이블 생성
 create table subject(
 	subject_no int primary key,
     subject_name varchar(20),
@@ -27,6 +32,7 @@ create table subject(
 	on update cascade
 );
 
+-- [class_time : 강의시간] 테이블 생성
 create table class_time(
 	time_id int primary key,
     subject_no int,
@@ -37,6 +43,7 @@ create table class_time(
     on update cascade
 );
 
+-- [student : 학생] 테이블 생성
 create table student(
 	student_id int primary key,
     student_name varchar(10),
@@ -132,6 +139,11 @@ insert into student(student_id, student_name, address) values
 		(20, '노유민', '강원도 춘천시 퇴계동');
         
 select * from student;
+alter table student
+	modify address varchar(50) default '서울시 강남구';
+select * from information_schema.table_constraints
+	where table_name = 'student';
+desc student;
 
 UPDATE student
 SET student_id = CASE student_id
@@ -178,8 +190,97 @@ insert into enrollment(student_id, subject_no, grade) values
 		(20240015, 101, 'C0'), 
 		(20240017, 105, 'B+'),
 		(20240020, 103, 'A0');
-        
+
+alter table enrollment 
+	modify student_id int not null;
+alter table enrollment 
+	modify subject_no int not null;
 select * from enrollment;
+desc enrollment;
+
+-- A학점을 받은 학생의 정보를 조회
+select * 
+	from student
+	where student_id in 
+	(select student_id 
+		from enrollment where grade like 'A%');
+
+
+select s.student_name as '학생명',
+	   s.address as '주소',
+	   e.grade as '학점'
+	from student s, enrollment e
+    where s.student_id = e.student_id
+		and e.grade like 'A%';
+
+-- Ansi sql
+select s.student_name as '학생명',
+	   s.address as '주소',
+	   e.grade as '학점'
+	from student s inner join enrollment e
+					on s.student_id = e.student_id
+	where e.grade like 'A%';
+        
+-- C학점을 받은 학생의 정보와 과목명을 조회
+select s.student_name as '학생명',
+	   s.address as '주소',
+	   sb.subject_name as '과목명'
+	from student s, enrollment e, subject sb
+    where s.student_id = e.student_id
+		and sb.subject_no = e.subject_no
+		and e.grade like 'C%';
+
+select s.student_name as '학생명',
+	   s.address as '주소',
+	   sb.subject_name as '과목명'
+	from student s  inner join enrollment e 
+					on s.student_id = e.student_id
+					inner join subject sb
+                    on sb.subject_no = e.subject_no
+	where e.grade like 'C%';
+        
+-- 100분 강의하는 과목정보와 강사정보를 조회
+select * from class_time c, subject s
+		where c.subject_no = s.subject_no
+        and time_to_sec(timediff(
+						substring(c.class_time, 9, 5), -- '12:00' 추출
+						substring(c.class_time, 3, 5) -- '09:00' 추출
+						)
+					 ) / 60 >= 100;
+        
+        
+select s.*, i.* 
+	from subject s, class_time c, instructor i
+    where s.subject_no = c.subject_no
+    and s.instructor_no = i.instructor_no
+    and time_to_sec(timediff(
+		substring(c.class_time, 9, 5), -- '12:00' 추출
+        substring(c.class_time, 3, 5) -- '09:00' 추출
+		)
+	 ) / 60 >= 100;
+
+-- 100분 강의하는 강사정보, 과목명을 조회 => 서브쿼리사용, 과목명(스칼라 서브쿼리)
+select i.*,
+	   (select subject_name from subject s 
+			where s.instructor_no = i.instructor_no limit 1) as '과목명'
+	from instructor i
+    where i.instructor_no in 
+		(select s.instructor_no from subject s
+			where s.subject_no in  
+				(select subject_no from class_time c
+				   where time_to_sec(timediff(
+						substring(c.class_time, 9, 5), -- '12:00' 추출
+						substring(c.class_time, 3, 5) -- '09:00' 추출
+						)
+					 ) / 60 >= 100));
+                     
+-- '정우성' 강사가 강의하는 모든 과목 조회
+	select s.*
+		from subject s, instructor i
+			where s.instructor_no = i.instructor_no
+				and i.instructor_name = '정우성';
+
+
 
 
 

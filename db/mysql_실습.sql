@@ -1281,6 +1281,7 @@ from employee e left outer join
 				on e.emp_id = v.emp_id
 order by count desc;
 
+use hrdb2019;
 -- '2015' ~ '2017'년도 입사한 사원들의 총휴가사용 일수 조회
 -- 1) '2015' ~ '2017'년도 입사자 조회
 select *
@@ -1291,6 +1292,8 @@ select *
 select emp_id, sum(duration) as count
 	from vacation 
     group by emp_id;
+
+select * from vacation;
 
 -- 3) 1, 2을 조인 => 2015~2017년도 입사자들의 휴가사용 일수 모두 포함
 select  t1.emp_id,
@@ -2180,6 +2183,114 @@ select * from emp_const2;
 delete from department2
 	where dept_id = 'ABC';
 select * from emp_const2;
+
+/*********************************************************************
+	행번호 : row_number() over() as '별칭'
+**********************************************************************/
+
+-- 정보시스템 부서의 사원들 연봉이 높은 순으로, 사번, 사원명, 급여 조회
+select  row_number() over(order by salary desc) as rno,
+		emp_id,
+        emp_name,
+        salary
+	from employee 
+		where dept_id = 'SYS';
+
+-- 휴가를 많이 사용한 사원순으로 조회, 행번호, 사원명, 부서아이디, 휴가일수(총합)
+select  row_number() over(order by sum(duration) desc) as rno,
+		e.emp_id,
+	    e.emp_name,
+        e.dept_id,
+        sum(v.duration) as '휴가일수(총합)'
+	from employee e, vacation v
+		where e.emp_id = v.emp_id
+		group by v.emp_id;
+        
+/*********************************************************************
+	석차 : rank() over() as '별칭'
+**********************************************************************/
+-- 사원이 급여가 높은순으로 정렬
+select  rank() over(order by salary desc) as 'rank',
+		emp_id,
+        emp_name,
+        salary
+	from employee;
+
+-- 입사일이 빠른 순서대로 정렬
+select  rank() over(order by hire_date asc) as 'rank',
+		emp_id,
+        emp_name,
+        salary,
+        hire_date
+	from employee;
+    
+    
+/*********************************************************************
+	트리거 생성 : 테이블의 pk 정의 :: '문자' + '000' + 1(auto_increment)
+**********************************************************************/
+-- trigger 생성 : 여러개의 sql문 포함
+/************************************************
+delimiter $$
+create trigger [트리거명]
+before insert on [테이블명]
+for each row
+begin
+declare max_code int;  --  'M0001'
+
+-- 현재 저장된 값 중 가장 큰 값을 가져옴
+SELECT IFNULL(MAX(CAST(right([기본키 컬럼명], 4) AS UNSIGNED)), 0)
+INTO max_code
+FROM [테이블명]; 
+
+-- 'M0001' 형식으로 아이디 생성, LPAD(값, 크기, 채워지는 문자형식) : M0001
+SET NEW.[기본키 컬럼명] = concat('M', LPAD((max_code+1), 4, '0'));
+
+end $$
+delimiter ;
+/************************************************/
+
+show tables;
+create table member(
+	mid char(5) primary key, -- 'M0001'
+    name varchar(5) not null,
+	mdate datetime
+);
+desc member;
+select * from information_schema.triggers
+	where trigger_schema = 'hrdb2019';
+
+/************************************************
+	mid에 들어가는 'M0001' 타입의 회원아이디 트리거
+/************************************************/
+delimiter $$
+create trigger trg_member_mid
+before insert on member
+for each row
+begin
+declare max_code int;  --  'M0001'
+
+-- 현재 저장된 값 중 가장 큰 값을 가져옴
+SELECT IFNULL(MAX(CAST(right(mid, 4) AS UNSIGNED)), 0)
+INTO max_code
+FROM member; 
+
+-- 'M0001' 형식으로 아이디 생성, LPAD(값, 크기, 채워지는 문자형식) : M0001
+SET NEW.mid = concat('M', LPAD((max_code+1), 4, '0'));
+
+end $$
+delimiter ;
+/************************************************/
+desc member;
+
+insert into member(name, mdate)
+	values('홍길동', now()),
+		  ('홍길순', now()),
+          ('이정후', now()),
+          ('이예빈', now());
+
+select * from member;
+    
+
 
 
 
